@@ -61,28 +61,29 @@ class userController extends Controller
     public function edit(Request $request)
     {
         $usuario = User::findOrFail($request->id);
-        //return view('usuarios.edit', compact('usuario'));
+        return view('usuarios.edit', compact('usuario'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\rc  $rc
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
     {
         $usuario = User::findOrFail($request->id);
-        $usuario ->name = $request->name;
-        $usuario ->email = $request->email;
-        $usuario ->phone = $request->phone;
-        $usuario ->role = $request->role;
+        $usuario->name = $request->name;
+        $usuario->phone = $request->phone;
+        $usuario->email = $request->email;
+        $usuario->password = $request->password;
+        $usuario->role = $request->role;
 
-        $usuario ->save();
 
-        $plataformas = User::orderBy('id', 'desc')->paginate();
-        //return view('plataformas.index', compact('plataformas'));
+        $usuario->save();
+
+        $usuarios = User::orderBy('id', 'desc')->paginate();
+        return view('usuarios.index', compact('usuarios'));
     }
 
     /**
@@ -95,6 +96,6 @@ class userController extends Controller
     {
         $usuario = User::destroy($request->id);
         $usuarios = User::orderBy('id', 'desc')->paginate();
-        //return view('usuarios.index', compact('usuarios'));
+        return view('usuarios.index', compact('usuarios'));
     }
 }
