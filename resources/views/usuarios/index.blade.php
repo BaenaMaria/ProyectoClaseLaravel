@@ -25,15 +25,18 @@
             <td>{{$usuario->phone}}</td>
             <td>{{$usuario->role}}</td>
             <td>
-                <form action="{{route('usuarios.destroy', $usuario)}}" method="POST">
-                    @csrf
-                    @method('delete')
-                    <button class="btn btn-secondary" type="submit">Eliminar</button>
-                </form>
-                <form action="{{route('usuarios.edit', $usuario)}}" method="GET">
-                    @csrf
-                    <button class="btn btn-secondary" type="submit">Editar</button>
-                </form>
+
+                    <form action="{{route('usuarios.destroy', $usuario)}}" method="POST">
+                        @csrf
+                        @method('delete')
+                        <button class="btn btn-secondary" type="submit">Eliminar</button>
+                    </form>
+
+                    <form action="{{route('usuarios.edit', $usuario)}}" method="GET">
+                        @csrf
+                        <button class="btn btn-secondary" type="submit">Editar</button>
+                    </form>
+
             </td>
 
         @endforeach
