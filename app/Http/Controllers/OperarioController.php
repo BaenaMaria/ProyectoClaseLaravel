@@ -106,7 +106,7 @@ class OperarioController extends Controller
         $operario->phone = $request->phone;
         $operario->email = $request->email;
         $operario->password = $request->password;
-        $operario->tipe = $request->tipee;
+        $operario->tipe = $request->tipe;
 
         $operario->save();
 
@@ -126,4 +126,6 @@ class OperarioController extends Controller
         $operarios = Operario::orderBy('id', 'desc')->paginate();
         return view('operarios.index', compact('operarios'));
     }
+
+
 }

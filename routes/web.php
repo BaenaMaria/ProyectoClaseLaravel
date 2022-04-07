@@ -36,3 +36,5 @@ Route::post('/operarios/store', [OperarioController::class, 'store'])->name('ope
 Route::get('/operarios/{id}', [OperarioController::class, 'edit'])->name('operarios.edit');//Mostrar vista de actualizar
 Route::put('/operarios/{id}', [OperarioController::class, 'update'])->name('operarios.update');//Actualizar operario
 Route::delete('/operarios/{id}', [OperarioController::class, 'destroy'])->name('operarios.destroy');//Eliminar operarios
+
+

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="table-responsive">
     <table  class="table table-hover" >
         <thead>
@@ -9,7 +10,7 @@
                 <th>Nombre</th>
                 <th>Email</th>
                 <th>Teléfono</th>
-                <th>Rol</th>
+                <th>Clase</th>
                 <th>Acciones</th>
 
             </tr>
@@ -23,7 +24,7 @@
             <td>{{$operario->name}}</td>
             <td>{{$operario->email}}</td>
             <td>{{$operario->phone}}</td>
-            <td>{{$operario->role}}</td>
+            <td>{{$operario->tipe}}</td>
             <td>
 
                     <form action="{{route('operarios.destroy', $operario)}}" method="POST">
