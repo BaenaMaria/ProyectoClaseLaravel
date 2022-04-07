@@ -17,23 +17,23 @@
         <tbody>
 
 
-            @foreach ($usuarios as $usuario)
+            @foreach ($operarios as $operario)
             <tr>
-            <td>{{$usuario->id}}</td>
-            <td>{{$usuario->name}}</td>
-            <td>{{$usuario->email}}</td>
-            <td>{{$usuario->phone}}</td>
-            <td>{{$usuario->role}}</td>
+            <td>{{$operario->id}}</td>
+            <td>{{$operario->name}}</td>
+            <td>{{$operario->email}}</td>
+            <td>{{$operario->phone}}</td>
+            <td>{{$operario->role}}</td>
             <td>
 
-                    <form action="{{route('usuarios.destroy', $usuario)}}" method="POST">
+                    <form action="{{route('operarios.destroy', $operario)}}" method="POST">
                         @csrf
                         @method('delete')
                         <button class="btn btn-outline-danger type="submit">Eliminar</button>
                     </form>
                     <br>
 
-                    <form action="{{route('usuarios.edit', $usuario)}}" method="GET">
+                    <form action="{{route('operarios.edit', $operario)}}" method="GET">
                         @csrf
                         <button class="btn btn-outline-info" type="submit">Editar</button>
                     </form>

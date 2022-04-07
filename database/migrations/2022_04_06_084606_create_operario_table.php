@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->integer('phone');
             $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
             $table->enum('tipe', ['fontaneria', 'electricidad', 'limpieza', 'pintura', 'ascensores', 'cristal', 'albañil', 'conserje']);
 
             $table->timestamps();

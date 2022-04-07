@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('tablon', function (Blueprint $table) {
             $table->id();
             $table->string("anuncio");
+            $table->date("date");
             $table->timestamps();
         });
 

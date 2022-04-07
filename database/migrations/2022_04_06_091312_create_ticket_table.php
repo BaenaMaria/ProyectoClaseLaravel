@@ -29,6 +29,7 @@ return new class extends Migration
             ->onUpdate('cascade');
             $table->enum('tipe', ['fontaneria', 'electricidad', 'limpieza', 'pintura', 'ascensores', 'cristal', 'albañil', 'conserje']);
             $table->string('description');
+            $table->enum('status', ['Abierta','Asignada', 'En curso', 'Esperando respuesta','Cerrada resuelta', 'Cerrada sin resolver' ]);
             $table->date('dateIni');
             $table->date('dateEnd')->nullable();
             $table->string('bill')->nullable();

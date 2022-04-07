@@ -30,7 +30,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="number"
+                                <input id="name" type="text"
                                 class="form-control @error('name') is-invalid @enderror"
                                 name="name" placeholder="{{$usuario->name}}" value="{{$usuario->name}}"
                                 required autocomplete="name" autofocus>
