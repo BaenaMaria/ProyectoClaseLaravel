@@ -12,6 +12,32 @@
                         @csrf
 
                         <div class="row mb-3">
+                            <label for="title" class="col-md-4 col-form-label text-md-end">Clase de anuncio</label>
+                            <div class="col-md-6">
+                                <select name="title" id="title" class="form-select" required>
+
+                                    <option value="venta">Venta</option>
+                                    <option value="alquiler">Alquiler</option>
+                                    <option value="aviso">Aviso</option>
+                                    <option value="obras">Obras</option>
+                                    <option value="ayuda">Ayuda</option>
+                                    <option value="otros">Otros</option>
+
+
+
+
+                                </select>
+
+                                @error('tipe')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="anuncio" class="col-md-4 col-form-label text-md-end">{{ __('Anuncios') }}</label>
 
                             <div class="col-md-6">
@@ -24,6 +50,20 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <div class="row mb-3">
+                            <label for="idUser" class="col-md-4 col-form-label text-md-end">{{ __('ID') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="idUser" type="number"
+                                    class="form-control" disabled
+                                    name="idUser" value="{{Auth::user()->id}}"
+                                    required autocomplete="idUser" autofocus>
+
+                                </div>
+                         </div>
+
+
 
 
                         <div class="row mb-0">

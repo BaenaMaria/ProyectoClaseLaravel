@@ -20,7 +20,8 @@ class TablonController extends Controller
 
         return Validator::make($data, [
             'anuncio' => ['required', 'string', 'max:255'],
-
+            'title' => ['required','in:venta,alquiler, aviso, obras, ayuda, otros'],
+            'userId' => [],
 
 
         ]);
@@ -31,7 +32,8 @@ class TablonController extends Controller
 
         return Tablon::create([
             'anuncio' => $data['anuncio'],
-            'date' => $data['date'],
+            'title' => $data['title'],
+            'idUser' => $data['userId'],
 
         ]);
     }

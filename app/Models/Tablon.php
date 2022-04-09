@@ -8,12 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class tablon extends Model
 {
     use HasFactory;
-    protected $table = 'tablon';
+    use HasFactory;
+    protected $table = "tablon";
 
     protected $fillable = [
         'anuncio',
-        'date',
-
+        'title',
+        'idUser',
 
 
     ];

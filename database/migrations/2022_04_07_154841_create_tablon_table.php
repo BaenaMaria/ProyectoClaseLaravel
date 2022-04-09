@@ -15,17 +15,11 @@ return new class extends Migration
     {
         Schema::create('tablon', function (Blueprint $table) {
             $table->id();
-            $table->string("anuncio");
-            $table->string('date')->default('00-00-00');
-            $table->unsignedBigInteger('idUser');
-            $table->foreign('idUser') //reference the column on this table correctly
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+            $table->string('anuncio');
+            $table->enum('title', ['venta','alquiler', 'aviso', 'obras', 'ayuda', 'otros'])->default('otros');
+            $table->unsignedInteger('idUser')->nullable();
             $table->timestamps();
         });
-
     }
 
     /**
@@ -37,5 +31,4 @@ return new class extends Migration
     {
         Schema::dropIfExists('tablon');
     }
-
 };
