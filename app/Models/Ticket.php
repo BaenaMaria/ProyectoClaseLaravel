@@ -5,16 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class tablon extends Model
+class Ticket extends Model
 {
     use HasFactory;
+    protected $table = "ticket";
 
-    protected $table = "tablon";
 
     protected $fillable = [
-        'anuncio',
-        'title',
         'idUser',
+        'idOperario',
+        'tipe',
+        'description',
+        'status',
+        'dateIni',
+        'dateEnd',
+        'bill',
         'photo',
 
     ];

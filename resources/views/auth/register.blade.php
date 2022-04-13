@@ -81,8 +81,9 @@
                             <div class="col-md-6">
                                 <select name="role" id="role" class="form-select" required>
 
-                                    <option value="usuario">usuario</option>
-                                    <option value="administrador">administrador</option>
+                                    <option value="usuario">Usuario</option>
+                                    <option value="administrador">Administrador</option>
+                                    <option value="operario">Operario</option>
 
                                 </select>
 

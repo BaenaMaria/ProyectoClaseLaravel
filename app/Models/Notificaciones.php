@@ -5,17 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class tablon extends Model
+class Notificaciones extends Model
 {
     use HasFactory;
 
-    protected $table = "tablon";
+    protected $table = "notification";
 
     protected $fillable = [
-        'anuncio',
-        'title',
         'idUser',
-        'photo',
+        'notification',
+        'date',
+        'title',
+
+
 
     ];
 }

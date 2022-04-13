@@ -21,8 +21,9 @@ return new class extends Migration
                 ->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-
             $table->string('notification');
+            $table->string('title');
+            $table->string('date');
             $table->timestamps();
 
         });

@@ -21,18 +21,15 @@ return new class extends Migration
                 ->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->unsignedBigInteger('idOperario');
-            $table->foreign('idOperario') //reference the column on this table correctly
-            ->references('id')
-            ->on('operario')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
             $table->enum('tipe', ['fontaneria', 'electricidad', 'limpieza', 'pintura', 'ascensores', 'cristal', 'albañil', 'conserje']);
             $table->string('description');
-            $table->enum('status', ['Abierta','Asignada', 'En curso', 'Esperando respuesta','Cerrada resuelta', 'Cerrada sin resolver' ]);
+            $table->enum('status', ['abierta','asignada', 'en curso', 'esperando respuesta','cerrada resuelta', 'cerrada sin resolver' ]);
             $table->date('dateIni');
             $table->date('dateEnd')->nullable();
             $table->string('bill')->nullable();
+
+            $table->string('photo')->nullable();
+            $table->timestamps();
         });
     }
 

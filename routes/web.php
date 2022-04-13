@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OperarioController;
 use App\Http\Controllers\TablonController;
+use App\Http\Controllers\NotificacionesController;
+use App\Http\Controllers\TicketController;
 
 
 /*
@@ -44,3 +46,18 @@ Route::post('/tablones/store', [TablonController::class, 'store'])->name('tablon
 Route::get('/tablones/{id}', [TablonController::class, 'edit'])->name('tablones.edit'); //Mostrar vista de actualizar
 Route::put('/tablones/{id}', [TablonController::class,'update'])->name('tablones.update'); //Actualizar tablon
 Route::delete('/tablones/{id}', [TablonController::class, 'destroy'])->name('tablones.destroy');//Eliminar tablon
+
+
+Route::get('/notificaciones', [NotificacionesController::class, 'index'])->name('notificaciones.index'); //Mostrar tablon
+Route::get('/notificaciones/register', [NotificacionesController::class,'register'])->name('notificaciones.register'); //Mostrar registro de tablon
+Route::post('/notificaciones/store', [NotificacionesController::class, 'store'])->name('notificaciones.store'); //Crear tablon
+Route::get('/notificaciones/{id}', [NotificacionesController::class, 'edit'])->name('notificaciones.edit'); //Mostrar vista de actualizar
+Route::put('/notificaciones/{id}', [NotificacionesController::class,'update'])->name('notificaciones.update'); //Actualizar tablon
+Route::delete('/notificaciones/{id}', [NotificacionesController::class, 'destroy'])->name('notificaciones.destroy');//Eliminar tablon
+
+Route::get('/tickets', [TicketController::class, 'index'])->name('tickets.index'); //Mostrar tablon
+Route::get('/tickets/register', [TicketController::class,'register'])->name('tickets.register'); //Mostrar registro de tablon
+Route::post('/tickets/store', [TicketController::class, 'store'])->name('tickets.store'); //Crear tablon
+Route::get('/tickets/{id}', [TicketController::class, 'edit'])->name('tickets.edit'); //Mostrar vista de actualizar
+Route::put('/tickets/{id}', [TicketController::class,'update'])->name('tickets.update'); //Actualizar tablon
+Route::delete('/tickets/{id}', [TicketController::class, 'destroy'])->name('tickets.destroy');//Eliminar tablon

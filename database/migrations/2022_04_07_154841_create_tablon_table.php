@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('anuncio');
             $table->enum('title', ['venta','alquiler', 'aviso', 'obras', 'ayuda', 'otros'])->default('otros');
             $table->unsignedInteger('idUser')->nullable();
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }

@@ -26,10 +26,10 @@
             <td>{{$usuario->role}}</td>
             <td>
 
-                    <form action="{{route('usuarios.destroy', $usuario)}}" method="POST">
+                    <form class="formEliminar"action="{{route('usuarios.destroy', $usuario)}}" method="POST">
                         @csrf
                         @method('delete')
-                        <button class="btn btn-outline-danger type="submit">Eliminar</button>
+                        <button onclick=" return confirm('¿Seguro que quieres eliminar este elemento?')"class="btn btn-outline-danger type="submit">Eliminar</button>
                     </form>
                     <br>
 
@@ -43,9 +43,7 @@
         @endforeach
     </tbody>
 </table>
-
-
-
-
 @endsection
+
+
 

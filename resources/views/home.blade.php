@@ -21,7 +21,7 @@
 
 
 
-                    @if (Auth::user()->role =="administrador" || Auth::user()->role =="superAdministrador")
+                    @if (Auth::user()->role =="administrador")
 
 
                         <div> <a class="text-sm text-gray-700 dark:text-gray-500 underline" href="{{ route('register') }}" >Registro de usuarios</a></div>
@@ -29,11 +29,19 @@
                         <div> <a class="text-sm text-gray-700 dark:text-gray-500 underline" href="{{ route('operarios.register') }}" >Registro de empresas de reformas</a></div>
                         <div> <a class="text-sm text-gray-700 dark:text-gray-500 underline" href="{{ route('tablones.register') }}" >Publicar anuncio</a></div>
                         <div> <a class="text-sm text-gray-700 dark:text-gray-500 underline" href="{{ route('tablones.index') }}" >Anuncios</a></div>
+                        <div> <a class="text-sm text-gray-700 dark:text-gray-500 underline" href="{{ route('notificaciones.register') }}" >Publicar notificaciones</a></div>
+                        <div> <a class="text-sm text-gray-700 dark:text-gray-500 underline" href="{{ route('notificaciones.index') }}" >Ver notificaciones del administrador</a></div>
+                        <div> <a class="text-sm text-gray-700 dark:text-gray-500 underline" href="{{ route('tickets.register') }}" >Publicar incidencia</a></div>
+                        <div> <a class="text-sm text-gray-700 dark:text-gray-500 underline" href="{{ route('tickets.index') }}">Ver incidencias</a></div>
+                    @elseif  (Auth::user()->role =="operario")
+                    <div> <a class="text-sm text-gray-700 dark:text-gray-500 underline" href="{{ route('tickets.index') }}" >Ver nincidencias</a></div>
 
-                    @else
-                        <div> <a class="text-sm text-gray-700 dark:text-gray-500 underline" href="{{ route('tablones.register') }}" >Publicar anuncio</a></div>
-                        <div> <a class="text-sm text-gray-700 dark:text-gray-500 underline" href="{{ route('tablones.index') }}" >Anuncios</a></div>
-
+                    @elseif(Auth::user()->role =="usuario")
+                     <div> <a class="text-sm text-gray-700 dark:text-gray-500 underline" href="{{ route('tablones.register') }}" >Publicar anuncio</a></div>
+                    <div> <a class="text-sm text-gray-700 dark:text-gray-500 underline" href="{{ route('tablones.index') }}" >Anuncios</a></div>
+                      <div> <a class="text-sm text-gray-700 dark:text-gray-500 underline" href="{{ route('notificaciones.index') }}" >Ver notificaciones del administrador</a></div>
+                      <div> <a class="text-sm text-gray-700 dark:text-gray-500 underline" href="{{ route('tickets.register') }}" >Publicar incidencia</a></div>
+                      <div> <a class="text-sm text-gray-700 dark:text-gray-500 underline" href="{{ route('tickets.index') }}" >Ver nincidencias</a></div>
                     @endif
 
 
