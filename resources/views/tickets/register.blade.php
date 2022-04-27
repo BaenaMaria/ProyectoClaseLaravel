@@ -17,12 +17,8 @@
 
                             <div class="col-md-6">
 
-                                <textarea id="idUser" class="form-control @error('idUser') is-invalid @enderror" name="idUser"autofocus>{{Auth::user()->id}}</textarea></p>
-                                @error('idUser')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input id="idUser" class="form-control"  value={{Auth::user()->id}} name="idUser">{{Auth::user()->role}}</input></p>
+
                             </div>
                         </div>
 
@@ -98,15 +94,7 @@
 
                         </div>
                     </div>
-                     <!--photo-->
-                     <div class="row mb-3" >
-                        <label for="photo" class="col-md-4 col-form-label text-md-end">{{ __('Adjunta foto de la incidencia') }}</label>
-                        <div class="col-md-6">
-                            <input id='photo'type="file" name="photo">
 
-
-                        </div>
-                    </div>
 
                         <!--dateIni-->
                         <div class="row mb-3" hidden>
@@ -129,6 +117,15 @@
                             </div>
                         </div>
 
+
+                        <!--photo-->
+                        <div class="row mb-3">
+                            <label for="photo" class="col-md-4 col-form-label text-md-end">{{ __('Foto de la incidencia') }}</label>
+                            <div class="col-md-6">
+                            <input type="file" id="photo" name='photo'>
+                            </div>
+
+                     </div>
 
 
 

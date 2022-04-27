@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('password');
             $table->integer('phone');
             $table->enum('role', ['usuario', 'administrador', 'operario'])->default('usuario');
-
+            $table->string('tipe')->nullable();
             $table->rememberToken();
             $table->timestamps();
 

@@ -112,6 +112,33 @@
 
                             </div>
                         </div>
+                        <div class="row mb-3">
+                            <label for="tipe" class="col-md-4 col-form-label text-md-end">Tipo de operario</label>
+                            <div class="col-md-6">
+                                <select name="tipe" id="role" class="form-select" required>
+
+                                    <option value="null"></option>
+                                    <option value="fontaneria">Fontanería</option>
+                                    <option value="electricidad">Electricidad</option>
+                                    <option value="limpieza">Limpieza</option>
+                                    <option value="pintura">Pintura</option>
+                                    <option value="ascensores">Ascensores</option>
+                                    <option value="cristal">Cristal</option>
+                                    <option value="albañil">Albañil</option>
+                                    <option value="conserje">Conserje</option>
+
+
+
+                                </select>
+
+                                @error('tipe')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
+                            </div>
+                        </div>
 
 
                         <div class="row mb-0">

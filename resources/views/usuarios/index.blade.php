@@ -10,6 +10,7 @@
                 <th>Email</th>
                 <th>Teléfono</th>
                 <th>Rol</th>
+                <th>Tipo</th>
                 <th>Acciones</th>
 
             </tr>
@@ -24,6 +25,7 @@
             <td>{{$usuario->email}}</td>
             <td>{{$usuario->phone}}</td>
             <td>{{$usuario->role}}</td>
+            <td>{{$usuario->tipe}}</td>
             <td>
 
                     <form class="formEliminar"action="{{route('usuarios.destroy', $usuario)}}" method="POST">
@@ -41,9 +43,9 @@
             </td>
 
         @endforeach
-    </tbody>
-</table>
+<style>
 @endsection
+
 
 
 

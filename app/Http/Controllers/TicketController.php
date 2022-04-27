@@ -16,9 +16,9 @@ class TicketController extends Controller
      */
     public function index(User $user)
     {
-        $tickets = Ticket::orderBy('dateIni', 'asc')->paginate();
-        return view('tickets.index', compact('tickets'));
 
+        $tickets = Ticket::orderBy('id', 'desc')->paginate();
+        return view('tickets.index', compact('tickets'));
 
 
     }
@@ -84,7 +84,7 @@ class TicketController extends Controller
         $ticket = Ticket::create($ticket);
         $ticket->save();
 
-        $tickets = Ticket::orderBy('dateIni', 'desc')->paginate();
+        $tickets = Ticket::orderBy('id', 'desc')->paginate();
         return view('tickets.index', compact('tickets'));
 
 
@@ -124,7 +124,6 @@ class TicketController extends Controller
     {
         $ticket = Ticket::findOrFail($request->id);
         $ticket->idUser = $request->idUser;
-        $ticket->idOperario = $request->idOperario;
         $ticket->tipe = $request->tipe;
         $ticket->description = $request->description;
         $ticket->status = $request->status;
@@ -132,9 +131,22 @@ class TicketController extends Controller
         $ticket->dateEnd = $request->dateEnd;
         $ticket->bill = $request->bill;
 
+
+
+
+        if ($bill=$request->file('bill')) {
+            $rutaGuardarImg='factura/';  //ruta donde guardar la imagen
+            $imagenfactura = date('YmdHis').".".$bill->getClientOriginalExtension();  //nombre de la imagen
+            $bill->move($rutaGuardarImg, $imagenfactura );
+            $ticket['photo']=(string) $imagenfactura;
+
+
+
+        }
+
         $ticket->save();
 
-        $tickets = Ticket::orderBy('dateIni', 'desc')->paginate();
+        $tickets = Ticket::orderBy('id', 'desc')->paginate();
         return view('tickets.index', compact('tickets'));
 
 
@@ -149,7 +161,8 @@ class TicketController extends Controller
     public function destroy(Request $request)
     {
         $ticket = Ticket::destroy($request->id);
-        $tickets = Ticket::orderBy('dateIni', 'desc')->paginate();
+
+        $tickets = Ticket::orderBy('id', 'desc')->paginate();
         return view('tickets.index', compact('tickets'));
 
 

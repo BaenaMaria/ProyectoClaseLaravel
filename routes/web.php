@@ -26,6 +26,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/usuarios', [UserController::class, 'index'])->name('usuarios.index'); //Mostrar usuarios
@@ -61,3 +62,4 @@ Route::post('/tickets/store', [TicketController::class, 'store'])->name('tickets
 Route::get('/tickets/{id}', [TicketController::class, 'edit'])->name('tickets.edit'); //Mostrar vista de actualizar
 Route::put('/tickets/{id}', [TicketController::class,'update'])->name('tickets.update'); //Actualizar tablon
 Route::delete('/tickets/{id}', [TicketController::class, 'destroy'])->name('tickets.destroy');//Eliminar tablon
+
