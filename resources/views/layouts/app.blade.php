@@ -63,6 +63,7 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                                    <a href="{{ url('/home') }}" class="dropdown-item">Dashboard de {{Auth::user()->name}}</a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
