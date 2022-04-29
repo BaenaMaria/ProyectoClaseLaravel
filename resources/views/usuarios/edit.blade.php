@@ -141,11 +141,30 @@
                         </div>
 
 
+                        <!--Dirreccion-->
+
+                        <div class="row mb-3">
+                            <label for="adress" class="col-md-4 col-form-label text-md-end">{{ __('Dirección') }}</label>
+
+                            <div class="col-md-6">
+                                <input value="{{$usuario->adress}}" placeholder="{{$usuario->adress}}" id="adress" type="adress" class="form-control @error('adress') is-invalid @enderror" name="adress" value="{{ old('adress') }}" autocomplete="adress" placeholder="Calle Ejemplo 1 110000">
+
+                                @error('adress')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+<br>
+
+
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button name="btnEditar" id="btnEditar" type="submit" class="btn btn-primary">
                                     Actualizar
                                 </button>
+                                <input type ='button' class="btn btn-primary"  value = 'Home' onclick="location.href = '{{ url('/home') }}'"/>
                             </div>
                         </div>
                     </form>

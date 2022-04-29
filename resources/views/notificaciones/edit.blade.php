@@ -45,8 +45,12 @@
                         <div class="row mb-3">
                             <label for="date" class="col-md-4 col-form-label text-md-end">{{ __('Fecha') }}</label>
                             <div class="col-md-6">
-                                <input  value="{{$notificacion->date}}" id="date" name='date' size="16" type="datetime-local" class="form-control" value="{{ date('Y-m-d\\TH:i') }}">
-
+                                <input required class="form-control @error('date') is-invalid @enderror" value="{{$notificacion->date}}" id="date" name='date' size="16" type="datetime-local" class="form-control" value="{{ date('Y-m-d\\TH:i') }}">
+                                @error('date')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
 
                             </div>
                         </div>
@@ -85,20 +89,7 @@
     </div>
 </div>
 
-<style type="text/css">
-    textarea {
-     background: url(http://i.stack.imgur.com/ynxjD.png) repeat-y;
-     width: 600px;
-     height: 300px;
-     font: normal 14px verdana;
-     line-height: 25px;
-     padding: 2px 10px;
-     border: solid 1px #ddd;
-    }
 
-
-
-    </style>
 
 
 @endsection

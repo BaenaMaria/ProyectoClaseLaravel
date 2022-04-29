@@ -20,4 +20,8 @@ class Notificaciones extends Model
 
 
     ];
+
+    protected $casts = [
+        'date' => 'datetime:dd-mm-YYYY   hh-mm',
+    ];
 }

@@ -14,8 +14,16 @@ class userController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+
+        $name = $request->get('buscarpor');
+
+        $usuarios = User::where('name','like',"%$name%")->paginate(5);
+        return view('usuarios.index', compact('usuarios'));
+
+
+
         $usuarios = User::orderBy('id', 'desc')->paginate();
         return view('usuarios.index', compact('usuarios'));
     }
@@ -79,7 +87,7 @@ class userController extends Controller
         $usuario->password = $request->password;
         $usuario->role = $request->role;
         $usuario->tipe = $request->tipe;
-
+        $usuario->adress = $request->adress;
 
         $usuario->save();
 

@@ -37,10 +37,7 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
+
 
     /**
      * Get a validator for an incoming registration request.
@@ -57,6 +54,7 @@ class RegisterController extends Controller
             'phone' => ['required', 'integer', 'min:9'],
             'rol' => ['in:usuario,administrador,operario'],
             'tipe' => ['nullable', 'string', ],
+            'adress' => ['nullable', 'string', ],
 
         ]);
     }
@@ -76,6 +74,7 @@ class RegisterController extends Controller
             'phone' => $data['phone'],
             'role' => $data['role'],
             'tipe' => $data['tipe'],
+            'adress' => $data['adress'],
         ]);
 
 

@@ -42,7 +42,7 @@
 
                             <div class="col-md-6">
 
-                                <textarea id="anuncio" class="form-control @error('anuncio') is-invalid @enderror" name="anuncio" value="{{ old('anuncio') }}" placeholder="Escribe tu anuncio de máximo 255 caracteres" required autocomplete="anuncio" autofocus ></textarea></p>
+                                <textarea id="anuncio" class="form-control @error('anuncio') is-invalid @enderror" name="anuncio" value="{{ old('anuncio') }}" placeholder="Escribe tu anuncio de máximo 100 caracteres" required autocomplete="anuncio" autofocus ></textarea></p>
                                 @error('anuncio')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

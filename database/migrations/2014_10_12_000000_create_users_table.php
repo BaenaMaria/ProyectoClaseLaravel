@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('phone');
             $table->enum('role', ['usuario', 'administrador', 'operario'])->default('usuario');
             $table->string('tipe')->nullable();
+            $table->string('adress')->nullable();
             $table->rememberToken();
             $table->timestamps();
 

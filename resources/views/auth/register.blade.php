@@ -99,11 +99,11 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="tipe" class="col-md-4 col-form-label text-md-end">Tipo de operario</label>
+                            <label for="tipe" id ='labelO'class="col-md-4 col-form-label text-md-end">Tipo de operario</label>
                             <div class="col-md-6">
-                                <select name="tipe" id="role" class="form-select" required>
+                                <select name="tipe" id="tipe" class="form-select" required>
 
-                                    <option value="null">No es empresa</option>
+                                    <option value="nada">No es empresa</option>
                                     <option value="fontaneria">Fontanería</option>
                                     <option value="electricidad">Electricidad</option>
                                     <option value="limpieza">Limpieza</option>
@@ -125,6 +125,22 @@
 
                             </div>
                         </div>
+
+                        <!--Dirreccion-->
+
+                        <div class="row mb-3">
+                            <label id ='label1' for="adress" class="col-md-4 col-form-label text-md-end">{{ __('Dirección') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="adress" type="adress" class="form-control @error('adress') is-invalid @enderror" name="adress" value="{{ old('adress') }}" autocomplete="adress" placeholder="Calle Ejemplo 1 110000">
+
+                                @error('adress')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
 <br>
 <br>
 <br>
@@ -134,6 +150,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
+                                <input type ='button' class="btn btn-primary"  value = 'Home' onclick="location.href = '{{ url('/home') }}'"/>
                             </div>
                         </div>
                     </form>
@@ -143,5 +160,34 @@
     </div>
 </div>
 
+<script>
+        var role = document.getElementById("role");
+        var tipe = document.getElementById("tipe");
+        var labelO = document.getElementById("labelO");
+        var adress = document.getElementById("adress");
+        var label1 = document.getElementById("label1");
 
+        role.addEventListener("change", valideRole, false);
+        tipe.style.visibility = "hidden";
+        labelO.style.visibility = "hidden";
+        adress.style.visibility = "hidden";
+        label1.style.visibility = "hidden";
+
+        function valideRole() {
+            if (role.value == "operario") {
+                tipe.style.visibility = "visible";
+                labelO.style.visibility = "visible";
+                adress.style.visibility = "visible";
+                label1.style.visibility = "visible";
+            }
+            if (role.value != "operario") {
+                tipe.style.visibility = "hidden";
+                labelO.style.visibility = "hidden";
+                tipe.value = "nada";
+                adress.style.visibility = "hidden";
+                label1.style.visibility = "hidden";
+            }
+        }
+    </script>
 @endsection
+

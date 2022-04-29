@@ -10,8 +10,17 @@ use Illuminate\Support\Facades\Validator;
 class TablonController extends Controller
 {
     protected $table = 'tablon';
-    public function index()
+
+    public function index(Request $request)
     {
+
+        $title = $request->get('buscarpor');
+
+        $tablones = Tablon::where('title','like',"%$title%")->paginate(5);
+
+        return view('tablones.index', compact('tablones'));
+
+
         $tablones = Tablon::orderBy('id', 'desc')->paginate();
         return view('tablones.index', compact('tablones'));
     }
@@ -19,7 +28,7 @@ class TablonController extends Controller
     {
 
         return Validator::make($data, [
-            'anuncio' => ['required', 'string', 'max:255'],
+            'anuncio' => ['required', 'string', 'max:100'],
             'title' => ['required','in:venta,alquiler, aviso, obras, ayuda, otros'],
             'userId' => [],
 

@@ -76,11 +76,6 @@
                             <select name="status" id="status" class="form-select" required>
 
                                 <option value="Abierta">Abierta</option>
-                                <option value="Asignada" hidden>Asignada</option>
-                                <option value="En curso" hidden>En curso</option>
-                                <option value="Esperando respuesta" hidden>Esperando respuesta</option>
-                                <option value="Cerrada resuelta" hidden>Cerrada resuelta</option>
-                                <option value="Cerrada sin resolver" hidden>Cerrada sin resolver</option>
 
 
 
@@ -120,7 +115,7 @@
 
                         <!--photo-->
                         <div class="row mb-3">
-                            <label for="photo" class="col-md-4 col-form-label text-md-end">{{ __('Foto de la incidencia') }}</label>
+                            <label for="photo" class="col-md-4 col-form-control text-md-end">{{ __('Foto de la incidencia') }}</label>
                             <div class="col-md-6">
                             <input type="file" id="photo" name='photo'>
                             </div>

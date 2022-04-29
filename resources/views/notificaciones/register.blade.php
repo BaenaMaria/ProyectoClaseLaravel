@@ -63,16 +63,6 @@
                                 @enderror
                             </div>
                         </div>
-                                <!--photo-->
-                                <div class="row mb-3" >
-                                <label for="photo" class="col-md-4 col-form-label text-md-end">{{ __('Adjunta foto de la incidencia') }}</label>
-                                <div class="col-md-6">
-                                <input id='photo'type="file" name="photo">
-
-
-                                </div>
-                                </div>
-
 
 
                         <div class="row mb-0">
@@ -91,7 +81,7 @@
 </div>
 <style type="text/css">
     textarea {
-     background: url(http://i.stack.imgur.com/ynxjD.png) repeat-y;
+
      width: 600px;
      height: 300px;
      font: normal 14px verdana;
@@ -99,9 +89,12 @@
      padding: 2px 10px;
      border: solid 1px #ddd;
     }
+    .date {
+  /* Ocultar el campo de fecha */
+  display: none;
+}
 
 
-    </style>
-
+</style>
 
 @endsection

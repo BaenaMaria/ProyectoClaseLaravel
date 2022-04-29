@@ -9,8 +9,11 @@ use Illuminate\Support\Facades\Validator;
 class NotificacionesController extends Controller
 {
     protected $table = "notification";
-    public function index()
+
+    public function index(Request $request, Notificaciones $notificacion)
     {
+
+
         $notificaciones = Notificaciones::orderBy('id', 'desc')->paginate();
         return view('notificaciones.index', compact('notificaciones'));
     }
@@ -20,7 +23,7 @@ class NotificacionesController extends Controller
         return Validator::make($data, [
             'idUser' => ['integer'],
             'notification' => ['required', 'string'],
-            'date' => ['required'],
+            'date' => ['required', 'string'],
             'title' => ['required', 'string', 'max:50'],
 
 
@@ -34,12 +37,14 @@ class NotificacionesController extends Controller
         return Notificaciones::create([
 
 
+
             'notification' => $data['notification'],
-            'date' => $data['date'],
+            'date' =>  $data['date'],
             'idUser' => $data['iduser'],
             'title' => $data['title'],
 
         ]);
+
     }
     public function store(Request $request)
     {
@@ -62,9 +67,7 @@ class NotificacionesController extends Controller
         $notificacion->notification = $request->notification;
         $notificacion->title = $request->title;
         $notificacion->date = $request->date;
-
         $notificacion->save();
-
         $notificaciones = Notificaciones::orderBy('id', 'desc')->paginate();
         return view('notificaciones.index', compact('notificaciones'));
     }

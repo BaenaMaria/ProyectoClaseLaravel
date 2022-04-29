@@ -26,7 +26,8 @@ class User extends Authenticatable
         'password',
         'phone',
         'role',
-        'tipe'
+        'tipe',
+        'adress'
 
     ];
 
@@ -55,17 +56,16 @@ class User extends Authenticatable
 
         parent::boot();
 
-        static::created(function($user){
+        // static::created(function($user){
 
-            $email= DB::table('users')->select('email')->where('role', '=', 'administrador')->first();
-            $email2= DB::table('users')->select('email')->where('id', '=', $user->id)->first();
+        //     $email= DB::table('users')->select('email')->where('role', '=', 'administrador')->get();
+        //     $email2= DB::table('users')->select('email')->where('id', '=', $user->id)->get();
 
-            Mail::to($email)->send(new NuevoUsuario($user));
-            Mail::to($email2)->send(new NuevoUsuario($user));
-        });
+        //     Mail::to($email)->send(new NuevoUsuario($user));
+        //     Mail::to($email2)->send(new NuevoUsuario($user));
+        // });
 
     }
-
 
 
 }

@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Ticket;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
+use App\Mail\CerradaIncidencia;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 
 class TicketController extends Controller
 {
@@ -14,8 +17,15 @@ class TicketController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(User $user)
+    public function index(User $user, Request $request)
     {
+
+
+        $id = $request->get('buscarpor');
+
+        $tickets = Ticket::where('id','like',"%$id%")->paginate(5);
+
+        return view('tickets.index', compact('tickets'));
 
         $tickets = Ticket::orderBy('id', 'desc')->paginate();
         return view('tickets.index', compact('tickets'));
@@ -38,6 +48,7 @@ class TicketController extends Controller
             'dateIni' => ['required'],
             'dateEnd',
             'bill' => ['string'],
+            'firma' => ['string'],
             'photo' => ['string, image'],
 
 
@@ -57,6 +68,7 @@ class TicketController extends Controller
             'dateEnd'=>$data['dateEnd'],
             'bill' => $data['bill'],
             'photo' => $data['photo'],
+            'firma' => $data['firma'],
         ]);
 
     }
@@ -72,18 +84,24 @@ class TicketController extends Controller
     {
         $ticket=$request->all();
 
+
         if ($photo=$request->file('photo')) {
             $rutaGuardarImg='imagen/';  //ruta donde guardar la imagen
             $imagenIncidencia = date('YmdHis').".".$photo->getClientOriginalExtension();  //nombre de la imagen
             $photo->move($rutaGuardarImg,$imagenIncidencia );
-            $ticket['photo']=(string)$imagenIncidencia;
+            $ticket['photo']=(string)$rutaGuardarImg.$imagenIncidencia;
 
 
 
         }
+        else {
+
+            $rutaGuardarImg='imagen/';  //ruta donde guardar la imagen
+            $ticket['photo']=(string)$rutaGuardarImg."incidencia.png";
+        }
+
         $ticket = Ticket::create($ticket);
         $ticket->save();
-
         $tickets = Ticket::orderBy('id', 'desc')->paginate();
         return view('tickets.index', compact('tickets'));
 
@@ -111,6 +129,7 @@ class TicketController extends Controller
     {
         $ticket = Ticket::findOrFail($request->id);
         return view('tickets.edit', compact('ticket'));
+
     }
 
     /**
@@ -134,15 +153,29 @@ class TicketController extends Controller
 
 
 
+
         if ($bill=$request->file('bill')) {
-            $rutaGuardarImg='factura/';  //ruta donde guardar la imagen
-            $imagenfactura = date('YmdHis').".".$bill->getClientOriginalExtension();  //nombre de la imagen
-            $bill->move($rutaGuardarImg, $imagenfactura );
-            $ticket['photo']=(string) $imagenfactura;
+            $rutaGuardarImg='imagen/';  //ruta donde guardar la imagen
+            $imagenFactura= date('YmdHis').".".$bill->getClientOriginalExtension();  //nombre de la imagen
+            $bill->move($rutaGuardarImg,$imagenFactura );
+            $ticket['bill']=(string)$rutaGuardarImg.$imagenFactura;
 
 
 
         }
+        // if($ticket->status=='cerrada'||$ticket->status=='Cerrada' ){
+        //     $email= DB::table('users')->select('email')->where('role', '=', 'administrador')->get();
+        //     $email3= DB::table('users')->select('email')
+        //     ->leftjoin("ticket", "users.id", "=", "ticket.idUser")
+        //     ->where('users.id', '=', $ticket->idUser)->get();
+
+
+        //      Mail::to($email)->send(new CerradaIncidencia($ticket));
+        //      Mail::to($email3)->send(new CerradaIncidencia($ticket));
+        // }
+        // else{
+
+        // }
 
         $ticket->save();
 
