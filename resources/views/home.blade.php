@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
+ <!-- Fonts -->
+ <link rel="dns-prefetch" href="//fonts.gstatic.com">
+ <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
 @if (Auth::user()->role == 'administrador')
 
@@ -289,7 +291,7 @@
   border-radius: 2px;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
-
+  font-family: 'Nunito';
   /* == */
   width: 250px;
   /* == */
@@ -603,28 +605,10 @@
   float:left;
   /* == */
 }
-.mcd-menu li a.search button {
-  border: 1px solid #e67e22;
-  /*padding: 10px;*/
-  background: #e67e22;
-  outline: none;
-  color: #FFF;
-  margin-left: -4px;
-
-  /* == */
-  float:left;
-  padding: 10px 10px 11px 10px;
-  /* == */
-}
-.mcd-menu li a.search input:focus {
-  border: 1px solid #e67e22;
-}
-
-
 .search-mobile {
 	display:none !important;
-	background:#e67e22;
-	border-left:1px solid #e67e22;
+	background:#348cb2;
+	border-left:1px solid #348cb2;
 	border-radius:0 3px 3px 0;
 }
 .search-mobile i {
@@ -711,7 +695,7 @@
 		position:absolute;
 		bottom:0px;
 		left:0;
-		background:#e67e22;
+		background:#348cb2;
 		color:#FFF;
 		min-width:100%;
 		text-transform:lowercase;
@@ -741,13 +725,13 @@
 		left:35px;
 		top: 45px;
 		border:0;
-		border-top:4px solid #e67e22;
+		border-top:4px solid #348cb2;
 	}
 	.mcd-menu li ul li ul li > ul:before {
 		left:30px;
 		top: -9px;
 		border:0;
-		border-bottom:5px solid #e67e22;
+		border-bottom:5px solid #348cb2;
 		border-left:5px solid transparent;
 		border-right:5px solid transparent;
 	}
@@ -787,7 +771,7 @@
 		position:absolute;
 		bottom:0px;
 		left:0;
-		background:#e67e22;
+		background:#348cb2;
 		color:#FFF;
 		min-width:100%;
 		text-transform:lowercase;
@@ -817,13 +801,13 @@
 		left:35px;
 		top: 45px;
 		border:0;
-		border-top:4px solid #e67e22;
+		border-top:4px solid #348cb2;
 	}
 	.mcd-menu li ul li ul li > ul:before {
 		left:30px;
 		top: -9px;
 		border:0;
-		border-bottom:5px solid #e67e22;
+		border-bottom:5px solid #348cb2;
 		border-left:5px solid transparent;
 		border-right:5px solid transparent;
 	}
