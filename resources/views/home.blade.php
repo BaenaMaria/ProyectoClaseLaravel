@@ -102,13 +102,7 @@
               <h2 class="timer count-title count-number" data-to="{{$users}}" data-speed="1500"></h2>
                <p class="count-text ">Usuarios registrados</p>
             </div>
-                    </div>
-                      <div class="col">
-                       <div class="counter">
-              <i class="fa fa-bug fa-2x"></i>
-              <h2 class="timer count-title count-number" data-to="{{$incidenciasCurso}}" data-speed="1500"></h2>
-              <p class="count-text ">Incidencias en curso</p>
-            </div>
+
                       </div>
                       <div class="col">
                           <div class="counter">
@@ -119,10 +113,18 @@
                       <div class="col">
                       <div class="counter">
               <i class="fa fa-bug fa-2x"></i>
-              <h2 class="timer count-title count-number"data-to="{{$incidenciasCerradas}}" data-speed="1500"></h2>
-              <p class="count-text ">Incidencias cerradas</p>
+              <h2 class="timer count-title count-number"data-to="{{$incidenciasCurso}}" data-speed="1500"></h2>
+              <p class="count-text ">Incidencias en curso</p>
             </div>
+        </div>
+        <div class="col">
+                        <div class="counter">
+                <i class="fa fa-bug fa-2x"></i>
+                <h2 class="timer count-title count-number" data-to="{{$incidenciasCerradas}}" data-speed="1500"></h2>
+                <p class="count-text ">Incidencias cerradas</p>
+                </div>
                       </div>
+
                  </div>
 
 
@@ -201,21 +203,60 @@
     <div style="margin-left:23%">
 
         <div class="containerDashboard">
-          <h1> dashboard de {{Auth::user()->name}}:</h1>
+          <h1>Dashboard de {{Auth::user()->name}}:</h1>
         </div>
 
-
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+        <!------ Include the above in your HEAD tag ---------->
 
         <div class="w3-container">
-        <h2>Sidebar Navigation Example</h2>
-        <p>The sidebar with is set with "style="width:25%".</p>
-        <p>The left margin of the page content is set to the same value.</p>
-        </div>
+            <div class="container">
+                <div class="row">
+                    <br/>
 
-        </div>
 
-        </body>
-        </html>
+
+
+                </div>
+                    <div class="row text-center">
+                        <div class="col">
+                        <div class="counter">
+                  <i class="fa fa-user fa-2x"></i>
+                  <h2 class="timer count-title count-number" data-to="{{$anuncioUsuario}}" data-speed="1500"></h2>
+                   <p class="count-text ">Anuncios de </p>
+                </div>
+
+                          </div>
+                          <div class="col">
+                              <div class="counter">
+                  <i class="fa fa-bug fa-2x"></i>
+                  <h2 class="timer count-title count-number" data-to="" data-speed="1500"></h2>
+                  <p class="count-text ">Incidencias abiertas</p>
+                </div></div>
+                          <div class="col">
+                          <div class="counter">
+                  <i class="fa fa-bug fa-2x"></i>
+                  <h2 class="timer count-title count-number"data-to="" data-speed="1500"></h2>
+                  <p class="count-text ">Incidencias en curso</p>
+                </div>
+            </div>
+            <div class="col">
+                            <div class="counter">
+                    <i class="fa fa-bug fa-2x"></i>
+                    <h2 class="timer count-title count-number" data-to="" data-speed="1500"></h2>
+                    <p class="count-text ">Incidencias cerradas</p>
+                    </div>
+                          </div>
+
+                     </div>
+
+
+            </div>
+
+
     </div>
 
 @endif
@@ -229,7 +270,7 @@
                 <li>
 
                     <i class="fa fa-comments-o"></i>
-                    <strong>Opciones del operario {{Auth::user()->name}}:</strong>
+                    <strong>Opciones del usuario {{Auth::user()->name}}:</strong>
                     <hr>
 
 
@@ -277,23 +318,23 @@
                     <div class="counter">
               <i class="fa fa-bug fa-2x"></i>
               <h2 class="timer count-title count-number" data-to="{{$operarioAbiertas}}" data-speed="1500"></h2>
-               <p class="count-text ">Incidencias abiertas</p>
+               <p class="count-text ">Incidencias abiertas {{Auth::user()->tipe}}</p>
             </div>
                     </div>
-                      <div class="col">
-                       <div class="counter">
-              <i class="fa fa-bug fa-2x"></i>
-              <h2 class="timer count-title count-number" data-to="{{$operarioCurso}}" data-speed="1500"></h2>
-              <p class="count-text ">Incidencias en curso</p>
-            </div>
-                      </div>
+
                       <div class="col">
                           <div class="counter">
               <i class="fa fa-bug fa-2x"></i>
-              <h2 class="timer count-title count-number" data-to="{{$operarioCerradas}}" data-speed="1500"></h2>
-              <p class="count-text ">Incidencias cerradas</p>
+              <h2 class="timer count-title count-number" data-to="{{$operarioCurso}}" data-speed="1500"></h2>
+              <p class="count-text ">Incidencias en curso {{Auth::user()->tipe}}</p>
             </div></div>
-
+            <div class="col">
+                <div class="counter">
+       <i class="fa fa-bug fa-2x"></i>
+       <h2 class="timer count-title count-number" data-to="{{$operarioCerradas}}" data-speed="1500"></h2>
+       <p class="count-text ">Incidencias en cerradas {{Auth::user()->tipe}}</p>
+     </div>
+               </div>
 
 
         </div>

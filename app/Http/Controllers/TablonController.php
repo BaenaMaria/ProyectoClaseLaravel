@@ -30,19 +30,19 @@ class TablonController extends Controller
         return Validator::make($data, [
             'anuncio' => ['required', 'string', 'max:100'],
             'title' => ['required','in:venta,alquiler, aviso, obras, ayuda, otros'],
-            'userId' => [],
+            'idUser' => ['required'],
 
 
         ]);
     }
 
-    public function create(array $data)
+    public function create(array $data, Request $request)
     {
 
         return Tablon::create([
             'anuncio' => $data['anuncio'],
             'title' => $data['title'],
-            'idUser' => $data['userId'],
+            'idUser' => $data['idUser'],
 
         ]);
     }
@@ -65,6 +65,8 @@ class TablonController extends Controller
     {
         $tablon = Tablon::findOrFail($request->id);
         $tablon->anuncio = $request->anuncio;
+        $tablon->title = $request->title;
+        $tablon->idUser = $request->idUser;
 
         $tablon->save();
 

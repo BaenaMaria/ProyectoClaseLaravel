@@ -51,17 +51,16 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="idUser" class="col-md-4 col-form-label text-md-end">{{ __('ID') }}</label>
+                            <!--UserId-->
+                            <div class="row mb-3" hidden>
+                                <label for="idUser" class="col-md-4 col-form-label text-md-end">{{ __('ID usuario') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="idUser" type="number"
-                                    class="form-control" disabled
-                                    name="idUser" value="{{Auth::user()->id}}"
-                                    required autocomplete="idUser" autofocus>
+
+                                    <input id="idUser" class="form-control"  value={{Auth::user()->id}} name="idUser"></input></p>
 
                                 </div>
-                         </div>
+                            </div>
 
 
 

@@ -15,7 +15,7 @@ class tablon extends Model
         'anuncio',
         'title',
         'idUser',
-        'photo',
+
 
     ];
 }

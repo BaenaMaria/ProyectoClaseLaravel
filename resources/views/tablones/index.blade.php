@@ -20,10 +20,10 @@
         <div class="col-sm-4 py-2">
             <div class="card h-100 border-primary">
                 <div class="card-body">
-                    <h3 class="card-title">{{$tablon->title}}</h3>
+                    <h3 class="card-title">{{$tablon->title}} del usuario {{$tablon->idUser}}</h3>
                     <hr>
                     <textarea readonly class="card-text">{{$tablon->anuncio}}</textarea>
-                    @if($tablon->userId == Auth::user()->id||Auth::user()->role=='administrador')
+                    @if($tablon->idUser == Auth::user()->id||Auth::user()->role=='administrador')
 
 
                     <br>

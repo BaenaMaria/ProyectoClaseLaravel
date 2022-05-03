@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Ticket;
+use App\Models\Tablon;
+
 
 class HomeController extends Controller
 {
@@ -34,17 +36,21 @@ class HomeController extends Controller
 
          //counters operario
 
-
-         $operarioCurso= Ticket::where('tipe', '=', $request->user()->tipe)->count();
-               $operarioAbiertas= DB::table('ticket')->where('status', 'abierta')->count();
-               $operarioCerradas= DB::table('ticket')->where('status', 'cerrada')->count();
-
-
-
-
+         $operarioCurso= Ticket::where('tipe', '=', $request->user()->tipe)
+         ->where('status','=','en curso')->count();
+         $operarioAbiertas= Ticket::where('tipe', '=', $request->user()->tipe)
+         ->where('status', 'abierta')->count();
+         $operarioCerradas= Ticket::where('tipe', '=', $request->user()->tipe)
+         ->where('status', 'cerrada')->count();
 
 
+        //counters usuario
 
-        return view('home', compact('users', 'incidenciasCerradas', 'incidenciasAbiertas', 'incidenciasCurso', 'operarioCurso', 'operarioAbiertas', 'operarioCerradas'));
+       $anuncioUsuario=tablon::where('idUser', '=', $request->user()->id)->count();
+
+
+
+
+        return view('home', compact('users', 'incidenciasCerradas', 'incidenciasAbiertas', 'incidenciasCurso', 'operarioCurso', 'operarioAbiertas', 'operarioCerradas' ,'anuncioUsuario'));
     }
 }
