@@ -6,6 +6,7 @@
  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
  <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
 @if (Auth::user()->role == 'administrador')
 
@@ -16,7 +17,7 @@
             <ul class="sidebar">
                 <li>
 
-                    <i class="fa fa-comments-o"></i>
+                    <i class="fa fa-bars" aria-hidden="true"></i>
                     <strong>Opciones del administrador {{Auth::user()->name}}:</strong>
                     <hr>
 
@@ -26,25 +27,25 @@
 
                 <li>
                     <a href="">
-                        <i class="fa fa-comments-o"></i>
+                        <i class="fa fa-user"></i>
                         <strong>Usuarios</strong>
 
                     </a>
                     <ul>
-                        <li><a href="{{ route('register') }}"><i class="fa fa-globe"></i>Registrar nuevo usuario</a></li>
-                        <li><a href="{{ route('usuarios.index') }}"><i class="fa fa-group"></i>Ver lista de usuarios</a></li>
+                        <li><a href="{{ route('register') }}"><i class="fa fa-user"></i>Registrar nuevo usuario</a></li>
+                        <li><a href="{{ route('usuarios.index') }}"><i class="fa fa-user"></i>Ver lista de usuarios</a></li>
                     </ul>
                 </li>
 
                 <li>
                     <a href="">
-                        <i class="fa fa-comments-o"></i>
+                        <i class="fa fa-bell"></i>
                         <strong>Notificaciones</strong>
 
                     </a>
                     <ul>
-                        <li><a href="{{ route('notificaciones.register') }}"><i class="fa fa-globe"></i>Nueva notificación del administrador</a></li>
-                        <li><a href="{{ route('notificaciones.index') }}"><i class="fa fa-group"></i>Ver notificaciones del administrador</a></li>
+                        <li><a href="{{ route('notificaciones.register') }}"><i class="fa fa-bell"></i>Nueva notificación del administrador</a></li>
+                        <li><a href="{{ route('notificaciones.index') }}"><i class="fa fa-bell"></i>Ver notificaciones del administrador</a></li>
                     </ul>
                 </li>
                 <li>
@@ -54,19 +55,19 @@
 
                     </a>
                     <ul>
-                        <li><a href="{{ route('tablones.register') }}"><i class="fa fa-globe"></i>Nuevo anuncio</a></li>
-                        <li><a href="{{ route('tablones.index') }}"><i class="fa fa-group"></i>Ver anuncios</a></li>
+                        <li><a href="{{ route('tablones.register') }}"><i class="fa fa-comments-o"></i>Nuevo anuncio</a></li>
+                        <li><a href="{{ route('tablones.index') }}"><i class="fa fa-comments-o"></i>Ver anuncios</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="">
-                        <i class="fa fa-comments-o"></i>
+                        <i class="fa fa-bug" aria-hidden="true"></i>
                         <strong>Incidencias</strong>
 
                     </a>
                     <ul>
-                        <li><a href="{{ route('tickets.register') }}"><i class="fa fa-globe"></i>Abrir incidencia</a></li>
-                        <li><a href="{{ route('tickets.index') }}"><i class="fa fa-group"></i>Ver incidencias</a></li>
+                        <li><a href="{{ route('tickets.register') }}"><i class="fa fa-bug" aria-hidden="true"></i>Abrir incidencia</a></li>
+                        <li><a href="{{ route('tickets.index') }}"><i class="fa fa-bug" aria-hidden="true"></i>/i>Ver incidencias</a></li>
                     </ul>
                 </li>
 
@@ -145,7 +146,7 @@
             <ul class="sidebar">
                 <li>
 
-                    <i class="fa fa-comments-o"></i>
+                    <i class="fa fa-bars" aria-hidden="true"></i>
                     <strong>Opciones del usuario {{Auth::user()->name}}:</strong>
                     <hr>
 
@@ -155,7 +156,7 @@
 
                 <li>
                     <a href="">
-                        <i class="fa fa-comments-o"></i>
+                        <i class="fa fa-user"></i>
                         <strong>Usuarios</strong>
 
                     </a>
@@ -166,12 +167,12 @@
 
                 <li>
                     <a href="">
-                        <i class="fa fa-comments-o"></i>
+                        <i class="fa fa-bell"></i>
                         <strong>Notificaciones</strong>
 
                     </a>
                     <ul>
-                        <li><a href="{{ route('notificaciones.index') }}"><i class="fa fa-group"></i>Ver notificaciones del administrador</a></li>
+                        <li><a href="{{ route('notificaciones.index') }}"><i class="fa fa-bell"></i></i>Ver notificaciones del administrador</a></li>
                     </ul>
                 </li>
                 <li>
@@ -181,19 +182,19 @@
 
                     </a>
                     <ul>
-                        <li><a href="{{ route('tablones.register') }}"><i class="fa fa-globe"></i>Nuevo anuncio</a></li>
-                        <li><a href="{{ route('tablones.index') }}"><i class="fa fa-group"></i>Ver anuncios</a></li>
+                        <li><a href="{{ route('tablones.register') }}"><i class="fa fa-comments-o"></i></i>Nuevo anuncio</a></li>
+                        <li><a href="{{ route('tablones.index') }}"><i class="fa fa-comments-o"></i>Ver anuncios</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="">
-                        <i class="fa fa-comments-o"></i>
+                        <i class="fa fa-bug" aria-hidden="true"></i>
                         <strong>Incidencias</strong>
 
                     </a>
                     <ul>
-                        <li><a href="{{ route('tickets.register') }}"><i class="fa fa-globe"></i>Abrir incidencia</a></li>
-                        <li><a href="{{ route('tickets.index') }}"><i class="fa fa-group"></i>Ver incidencias</a></li>
+                        <li><a href="{{ route('tickets.register') }}"><i class="fa fa-bug" aria-hidden="true"></i></i>Abrir incidencia</a></li>
+                        <li><a href="{{ route('tickets.index') }}"><i class="fa fa-bug" aria-hidden="true"></i>Ver incidencias</a></li>
                     </ul>
                 </li>
 
@@ -269,7 +270,7 @@
             <ul class="sidebar">
                 <li>
 
-                    <i class="fa fa-comments-o"></i>
+                    <i class="fa fa-bars" aria-hidden="true"></i>
                     <strong>Opciones del usuario {{Auth::user()->name}}:</strong>
                     <hr>
 
@@ -279,12 +280,12 @@
 
                 <li>
                     <a href="">
-                        <i class="fa fa-comments-o"></i>
+                        <i class="fa fa-bug" aria-hidden="true"></i>
                         <strong>Incidencias</strong>
 
                     </a>
                     <ul>
-                        <li><a href="{{ route('tickets.index') }}"><i class="fa fa-group"></i>Ver incidencias</a></li>
+                        <li><a href="{{ route('tickets.index') }}"><i class="fa fa-bug" aria-hidden="true"></i>Ver incidencias</a></li>
                     </ul>
                 </li>
 
