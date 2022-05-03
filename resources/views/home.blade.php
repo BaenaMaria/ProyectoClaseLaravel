@@ -226,28 +226,28 @@
                         <div class="counter">
                   <i class="fa fa-user fa-2x"></i>
                   <h2 class="timer count-title count-number" data-to="{{$anuncioUsuario}}" data-speed="1500"></h2>
-                   <p class="count-text ">Anuncios de </p>
+                   <p class="count-text ">Mis anuncios </p>
                 </div>
 
                           </div>
                           <div class="col">
                               <div class="counter">
                   <i class="fa fa-bug fa-2x"></i>
-                  <h2 class="timer count-title count-number" data-to="" data-speed="1500"></h2>
-                  <p class="count-text ">Incidencias abiertas</p>
+                  <h2 class="timer count-title count-number" data-to="{{$usuarioAbiertas}}" data-speed="1500"></h2>
+                  <p class="count-text ">Mis incidencias abiertas</p>
                 </div></div>
                           <div class="col">
                           <div class="counter">
                   <i class="fa fa-bug fa-2x"></i>
-                  <h2 class="timer count-title count-number"data-to="" data-speed="1500"></h2>
-                  <p class="count-text ">Incidencias en curso</p>
+                  <h2 class="timer count-title count-number"data-to="{{$usuarioCurso}}" data-speed="1500"></h2>
+                  <p class="count-text ">Mis incidencias en curso</p>
                 </div>
             </div>
             <div class="col">
                             <div class="counter">
                     <i class="fa fa-bug fa-2x"></i>
-                    <h2 class="timer count-title count-number" data-to="" data-speed="1500"></h2>
-                    <p class="count-text ">Incidencias cerradas</p>
+                    <h2 class="timer count-title count-number" data-to="{{$usuarioCerradas}}" data-speed="1500"></h2>
+                    <p class="count-text ">Mis incidencias cerradas</p>
                     </div>
                           </div>
 

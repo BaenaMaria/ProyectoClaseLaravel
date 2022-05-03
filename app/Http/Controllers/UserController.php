@@ -19,12 +19,12 @@ class userController extends Controller
 
         $name = $request->get('buscarpor');
 
-        $usuarios = User::where('name','like',"%$name%")->paginate(5);
+        $usuarios = User::where('name','like',"%$name%")->paginate(1000);
         return view('usuarios.index', compact('usuarios'));
 
 
 
-        $usuarios = User::orderBy('id', 'desc')->paginate();
+        $usuarios = User::orderBy('id', 'desc')->paginate(1000);
         return view('usuarios.index', compact('usuarios'));
     }
 
@@ -91,7 +91,7 @@ class userController extends Controller
 
         $usuario->save();
 
-        $usuarios = User::orderBy('id', 'desc')->paginate();
+        $usuarios = User::orderBy('id', 'desc')->paginate(1000);
         return view('usuarios.index', compact('usuarios'));
     }
 
@@ -104,7 +104,7 @@ class userController extends Controller
     public function destroy(Request $request)
     {
         $usuario = User::destroy($request->id);
-        $usuarios = User::orderBy('id', 'desc')->paginate();
+        $usuarios = User::orderBy('id', 'desc')->paginate(1000);
         return view('usuarios.index', compact('usuarios'));
     }
 }

@@ -16,12 +16,12 @@ class TablonController extends Controller
 
         $title = $request->get('buscarpor');
 
-        $tablones = Tablon::where('title','like',"%$title%")->paginate(5);
+        $tablones = Tablon::where('title','like',"%$title%")->paginate(1000);
 
         return view('tablones.index', compact('tablones'));
 
 
-        $tablones = Tablon::orderBy('id', 'desc')->paginate();
+        $tablones = Tablon::orderBy('id', 'desc')->paginate(1000);
         return view('tablones.index', compact('tablones'));
     }
     protected function validator(array $data)
@@ -70,14 +70,14 @@ class TablonController extends Controller
 
         $tablon->save();
 
-        $tablones = Tablon::orderBy('id', 'desc')->paginate();
+        $tablones = Tablon::orderBy('id', 'desc')->paginate(1000);
         return view('tablones.index', compact('tablones'));
     }
 
     public function destroy(Request $request)
     {
         $tablon = Tablon::destroy($request->id);
-        $tablones = Tablon::orderBy('id', 'desc')->paginate();
+        $tablones = Tablon::orderBy('id', 'desc')->paginate(1000);
         return view('tablones.index', compact('tablones'));
     }
 

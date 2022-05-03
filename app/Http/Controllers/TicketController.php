@@ -23,11 +23,11 @@ class TicketController extends Controller
 
         $id = $request->get('buscarpor');
 
-        $tickets = Ticket::where('id','like',"%$id%")->paginate(5);
+        $tickets = Ticket::where('id','like',"%$id%")->paginate(1000);
 
         return view('tickets.index', compact('tickets'));
 
-        $tickets = Ticket::orderBy('id', 'desc')->paginate();
+        $tickets = Ticket::orderBy('id', 'desc')->paginate(1000);
         return view('tickets.index', compact('tickets'));
 
 
@@ -102,7 +102,7 @@ class TicketController extends Controller
 
         $ticket = Ticket::create($ticket);
         $ticket->save();
-        $tickets = Ticket::orderBy('id', 'desc')->paginate();
+        $tickets = Ticket::orderBy('id', 'desc')->paginate(1000);
         return view('tickets.index', compact('tickets'));
 
 
@@ -195,7 +195,7 @@ class TicketController extends Controller
     {
         $ticket = Ticket::destroy($request->id);
 
-        $tickets = Ticket::orderBy('id', 'desc')->paginate();
+        $tickets = Ticket::orderBy('id', 'desc')->paginate(1000);
         return view('tickets.index', compact('tickets'));
 
 

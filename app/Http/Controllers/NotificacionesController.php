@@ -14,7 +14,7 @@ class NotificacionesController extends Controller
     {
 
 
-        $notificaciones = Notificaciones::orderBy('id', 'desc')->paginate();
+        $notificaciones = Notificaciones::orderBy('id', 'desc')->paginate(1000);
         return view('notificaciones.index', compact('notificaciones'));
     }
     protected function validator(array $data)
@@ -68,14 +68,14 @@ class NotificacionesController extends Controller
         $notificacion->title = $request->title;
         $notificacion->date = $request->date;
         $notificacion->save();
-        $notificaciones = Notificaciones::orderBy('id', 'desc')->paginate();
+        $notificaciones = Notificaciones::orderBy('id', 'desc')->paginate(1000);
         return view('notificaciones.index', compact('notificaciones'));
     }
 
     public function destroy(Request $request)
     {
         $notificacion = Notificaciones::destroy($request->id);
-        $notificaciones = Notificaciones::orderBy('id', 'desc')->paginate();
+        $notificaciones = Notificaciones::orderBy('id', 'desc')->paginate(1000);
         return view('notificaciones.index', compact('notificaciones'));
     }
 }

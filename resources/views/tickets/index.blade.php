@@ -10,52 +10,6 @@
              <hr>
 
 
-                 @foreach ($tickets as $ticket)
-
-            <!--OPERARIO-->
-                        @if ( Auth::user()->role=='operario' && $ticket->tipe==Auth::user()->tipe)
-                        <div class="row">
-                            <div class="col-sm-4 py-2">
-                                <div class="card card-body h-100">
-                                    GESCONVES tu administrador de confianza
-                                    <img  src="/imagen/logo.PNG"  class="circular--square" alt="" width="100" height="100"  >
-                                </div>
-                            </div>
-
-                            <div class="col-sm-4 py-2">
-                                <div class="card h-100 border-primary">
-                                    <div class="card-body">
-
-                                         <h3 class="card-title">{{$ticket->id}}-{{$ticket->tipe}}</h3>
-                                         <img src="/{{$ticket->photo}}" width="300" height="300">
-                                         <small class="card-title">Fecha inicio {{$ticket->dateIni}}</small>
-                                         <br>
-                                         <small class="card-title">Usuario creador de la incidencia-{{$ticket->idUser}}</small>
-                                         <div>Estado {{$ticket->status}}</div>
-                                         @if ($ticket->status=='cerrada'|| $ticket->status=="Cerrada")
-                                         <small class="card-title">Fecha fin {{$ticket->dateEnd}}</small>
-                                         @endif
-
-                                         <hr>
-                                         <textarea readonly class="card-text">{{$ticket->description}}</textarea>
-
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4 py-2">
-                                <div class="card card-body h-100">
-                                    GESCONVES tu administrador de confianza
-                                    <img  src="/imagen/logo.PNG"  class="circular--square" alt="" width="100" height="100"  >
-                                </div>
-                            </div>
-                        </div>
-                        @endif
-
-
-
-             @endforeach
-
              @foreach ($tickets as $ticket)
 
               <!--ADMINISTRADOR Y USUARIO-->
@@ -125,6 +79,54 @@
 
 
              @endforeach
+
+
+                 @foreach ($tickets as $ticket)
+
+            <!--OPERARIO-->
+                        @if ( Auth::user()->role=='operario' && $ticket->tipe==Auth::user()->tipe)
+                        <div class="row">
+                            <div class="col-sm-4 py-2">
+                                <div class="card card-body h-100">
+                                    GESCONVES tu administrador de confianza
+                                    <img  src="/imagen/logo.PNG"  class="circular--square" alt="" width="100" height="100"  >
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4 py-2">
+                                <div class="card h-100 border-primary">
+                                    <div class="card-body">
+
+                                         <h3 class="card-title">{{$ticket->id}}-{{$ticket->tipe}}</h3>
+                                         <img src="/{{$ticket->photo}}" width="300" height="300">
+                                         <small class="card-title">Fecha inicio {{$ticket->dateIni}}</small>
+                                         <br>
+                                         <small class="card-title">Usuario creador de la incidencia-{{$ticket->idUser}}</small>
+                                         <div>Estado {{$ticket->status}}</div>
+                                         @if ($ticket->status=='cerrada'|| $ticket->status=="Cerrada")
+                                         <small class="card-title">Fecha fin {{$ticket->dateEnd}}</small>
+                                         @endif
+
+                                         <hr>
+                                         <textarea readonly class="card-text">{{$ticket->description}}</textarea>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 py-2">
+                                <div class="card card-body h-100">
+                                    GESCONVES tu administrador de confianza
+                                    <img  src="/imagen/logo.PNG"  class="circular--square" alt="" width="100" height="100"  >
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+
+
+
+             @endforeach
+
 
 
 

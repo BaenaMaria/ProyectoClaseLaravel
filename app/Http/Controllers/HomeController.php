@@ -48,9 +48,14 @@ class HomeController extends Controller
 
        $anuncioUsuario=tablon::where('idUser', '=', $request->user()->id)->count();
 
+        $usuarioCurso=Ticket::where('idUser', '=', $request->user()->id)
+       ->where('status','=','en curso')->count();
+       $usuarioAbiertas=Ticket::where('idUser', '=', $request->user()->id)
+       ->where('status', 'abierta')->count();
+       $usuarioCerradas=Ticket::where('idUser', '=', $request->user()->id)
+       ->where('status', 'cerrada')->count();
 
 
-
-        return view('home', compact('users', 'incidenciasCerradas', 'incidenciasAbiertas', 'incidenciasCurso', 'operarioCurso', 'operarioAbiertas', 'operarioCerradas' ,'anuncioUsuario'));
+        return view('home', compact('users', 'incidenciasCerradas', 'incidenciasAbiertas', 'incidenciasCurso', 'operarioCurso', 'operarioAbiertas', 'operarioCerradas' ,'anuncioUsuario' ,'usuarioCurso', 'usuarioAbiertas', 'usuarioCerradas'));
     }
 }
