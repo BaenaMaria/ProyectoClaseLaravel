@@ -4,18 +4,23 @@
  <!-- Fonts -->
  <link rel="dns-prefetch" href="//fonts.gstatic.com">
  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 @if (Auth::user()->role == 'administrador')
 
-<div class="container">
-    <nav>
-            <ul class="mcd-menu">
-                <li>
-                    <a href="">
-                        <i class="fa fa-comments-o"></i>
-                        <strong>Dashboard de {{Auth::user()->name}}:</strong>
+<!--ADMINISTRADOR-->
 
-                    </a>
+<div class="w3-sidebar w3-bar-block"  style="width:23%">
+    <nav>
+            <ul class="sidebar">
+                <li>
+
+                    <i class="fa fa-comments-o"></i>
+                    <strong>Opciones del administrador {{Auth::user()->name}}:</strong>
+                    <hr>
+
+
 
                 </li>
 
@@ -68,81 +73,44 @@
             </ul>
         </nav>
     </div>
-@endif
+   <!-- Page Content -->
+<div style="margin-left:23%">
 
-@if (Auth::user()->role == 'usuario')
-
-<div class="container">
-    <nav>
-            <ul class="mcd-menu">
-                <li>
-                    <a href="">
-                        <i class="fa fa-comments-o"></i>
-                        <strong>Dashboard de {{Auth::user()->name}}:</strong>
-
-                    </a>
-
-                </li>
-
-                <li>
-                    <a href="">
-                        <i class="fa fa-comments-o"></i>
-                        <strong>Usuarios</strong>
-
-                    </a>
-                    <ul>
-                        <li><a href="{{ route('usuarios.index') }}"><i class="fa fa-group"></i>Ver lista de usuarios</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="">
-                        <i class="fa fa-comments-o"></i>
-                        <strong>Notificaciones</strong>
-
-                    </a>
-                    <ul>
-                        <li><a href="{{ route('notificaciones.index') }}"><i class="fa fa-group"></i>Ver notificaciones del administrador</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="">
-                        <i class="fa fa-comments-o"></i>
-                        <strong>Tablón de anuncios</strong>
-
-                    </a>
-                    <ul>
-                        <li><a href="{{ route('tablones.register') }}"><i class="fa fa-globe"></i>Nuevo anuncio</a></li>
-                        <li><a href="{{ route('tablones.index') }}"><i class="fa fa-group"></i>Ver anuncios</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="">
-                        <i class="fa fa-comments-o"></i>
-                        <strong>Incidencias</strong>
-
-                    </a>
-                    <ul>
-                        <li><a href="{{ route('tickets.register') }}"><i class="fa fa-globe"></i>Abrir incidencia</a></li>
-                        <li><a href="{{ route('tickets.index') }}"><i class="fa fa-group"></i>Ver incidencias</a></li>
-                    </ul>
-                </li>
-
-            </ul>
-        </nav>
+    <div class="w3-container w3-teal">
+      <h1>Dashboard de {{Auth::user()->name}} </h1>
     </div>
+
+
+
+    <div class="w3-container">
+    <h2>Sidebar Navigation Example</h2>
+    <p>The sidebar with is set with "style="width:25%".</p>
+    <p>The left margin of the page content is set to the same value.</p>
+    </div>
+
+    </div>
+
+    </body>
+    </html>
+</div>
+
+
 @endif
+
+<!--USUARIO-->
+
 @if (Auth::user()->tipe == 'usuario')
 
-<div class="container">
+<div class="w3-sidebar w3-bar-block"  style="width:23%">
     <nav>
-            <ul class="mcd-menu">
+            <ul class="sidebar">
                 <li>
-                    <a href="">
-                        <i class="fa fa-comments-o"></i>
-                        <strong>Dashboard de {{Auth::user()->name}}:</strong>
 
-                    </a>
+                    <i class="fa fa-comments-o"></i>
+                    <strong>Opciones del usuario {{Auth::user()->name}}:</strong>
+                    <hr>
+
+
 
                 </li>
 
@@ -193,18 +161,41 @@
             </ul>
         </nav>
     </div>
+    <div style="margin-left:23%">
+
+        <div class="w3-container w3-teal">
+          <h1> dashboard de {{Auth::user()->name}}:</h1>
+        </div>
+
+
+
+        <div class="w3-container">
+        <h2>Sidebar Navigation Example</h2>
+        <p>The sidebar with is set with "style="width:25%".</p>
+        <p>The left margin of the page content is set to the same value.</p>
+        </div>
+
+        </div>
+
+        </body>
+        </html>
+    </div>
+
 @endif
+
+<!--OPERARIO-->
 @if ((Auth::user()->role == 'operario'))
 
-<div class="container">
+<div class="w3-sidebar w3-bar-block"  style="width:23%">
     <nav>
-            <ul class="mcd-menu">
+            <ul class="sidebar">
                 <li>
-                    <a href="">
-                        <i class="fa fa-comments-o"></i>
-                        <strong>Dashboard de {{Auth::user()->name}}:</strong>
 
-                    </a>
+                    <i class="fa fa-comments-o"></i>
+                    <strong>Opciones del usuario {{Auth::user()->name}}:</strong>
+                    <hr>
+
+
 
                 </li>
 
@@ -221,10 +212,32 @@
 
             </ul>
         </nav>
+    </div>
+    <div style="margin-left:23%">
+
+        <div class="w3-container w3-teal">
+          <h1>Dashboard de {{Auth::user()->name}}</h1>
+        </div>
+
+
+
+        <div class="w3-container">
+        <h2>Sidebar Navigation Example</h2>
+        <p>The sidebar with is set with "style="width:25%".</p>
+        <p>The left margin of the page content is set to the same value.</p>
+        </div>
+
+        </div>
+
+        </body>
+        </html>
     </div>
 @endif
 
     <style>
+        w3-container w3-teal{
+            background: #348cb2;
+        }
         body {
 	background: #EEE;
 	overflow-x:hidden;
@@ -242,39 +255,40 @@
     *zoom: 1;
 }
 
-.container {
+.w3-sidebar w3-bar-block {
     position: relative;
     margin: 0px auto;
     padding: 50px 0;
     clear: both;
+
 }
 @media only screen and (min-width: 1200px) {
-    .container {
+    .w3-sidebar w3-bar-block {
         width: 1210px;
     }
 }
 
 @media only screen and (min-width: 960px) and (max-width: 1199px) {
-    .container {
+    .w3-sidebar w3-bar-block {
         width: 1030px;
     }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 959px) {
-    .container {
+    .w3-sidebar w3-bar-block {
         width: 682px;
     }
 }
 
 @media only screen and (min-width: 480px) and (max-width: 767px) {
-    .container {
+    .w3-sidebar w3-bar-block {
         width: 428px;
         margin: 0 auto;
     }
 }
 
 @media only screen and (max-width: 479px) {
-    .container {
+    .w3-sidebar w3-bar-block {
         width: 320px;
         margin: 0 auto;
     }
@@ -282,7 +296,7 @@
 
 
 
-.mcd-menu {
+.sidebar {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -296,11 +310,11 @@
   width: 250px;
   /* == */
 }
-.mcd-menu li {
+.sidebar li {
   position: relative;
   /*float:left;*/
 }
-.mcd-menu li a {
+.sidebar li a {
   display: block;
   text-decoration: none;
   padding: 12px 20px;
@@ -315,7 +329,7 @@
   border-bottom: 1px solid #EEE;
   /* == */
 }
-.mcd-menu li a i {
+.sidebar li a i {
   /*display: block;
   font-size: 30px;
   margin-bottom: 10px;*/
@@ -328,22 +342,22 @@
 
 }
 /* == */
-.mcd-menu li a p {
+.sidebar li a p {
   float: left;
   margin: 0 ;
 }
 /* == */
 
-.mcd-menu li a strong {
+.sidebar li a strong {
   display: block;
   text-transform: uppercase;
 }
-.mcd-menu li a small {
+.sidebar li a small {
   display: block;
   font-size: 10px;
 }
 
-.mcd-menu li a i, .mcd-menu li a strong, .mcd-menu li a small {
+.sidebar li a i, .sidebar li a strong, .sidebar li a small {
   position: relative;
 
   transition: all 300ms linear;
@@ -352,7 +366,7 @@
   -moz-transition: all 300ms linear;
   -webkit-transition: all 300ms linear;
 }
-.mcd-menu li:hover > a i {
+.sidebar li:hover > a i {
     opacity: 1;
     -webkit-animation: moveFromTop 300ms ease-in-out;
     -moz-animation: moveFromTop 300ms ease-in-out;
@@ -360,7 +374,7 @@
     -o-animation: moveFromTop 300ms ease-in-out;
     animation: moveFromTop 300ms ease-in-out;
 }
-.mcd-menu li:hover a strong {
+.sidebar li:hover a strong {
     opacity: 1;
     -webkit-animation: moveFromLeft 300ms ease-in-out;
     -moz-animation: moveFromLeft 300ms ease-in-out;
@@ -368,7 +382,7 @@
     -o-animation: moveFromLeft 300ms ease-in-out;
     animation: moveFromLeft 300ms ease-in-out;
 }
-.mcd-menu li:hover a small {
+.sidebar li:hover a small {
     opacity: 1;
     -webkit-animation: moveFromRight 300ms ease-in-out;
     -moz-animation: moveFromRight 300ms ease-in-out;
@@ -377,10 +391,10 @@
     animation: moveFromRight 300ms ease-in-out;
 }
 
-.mcd-menu li:hover > a {
+.sidebar li:hover > a {
   color: #348cb2;
 }
-.mcd-menu li a.active {
+.sidebar li a.active {
   position: relative;
   color: #348cb2;
   border:0;
@@ -397,7 +411,7 @@
   margin: 0 -4px;
   /* == */
 }
-.mcd-menu li a.active:before {
+.sidebar li a.active:before {
   content: "";
   position: absolute;
   /*top: 0;
@@ -416,7 +430,7 @@
 }
 
 /* == */
-.mcd-menu li a.active:after {
+.sidebar li a.active:after {
   content: "";
   position: absolute;
   top: 42%;
@@ -484,8 +498,8 @@
 
 
 
-.mcd-menu li ul,
-.mcd-menu li ul li ul {
+.sidebar li ul,
+.sidebar li ul li ul {
   position: absolute;
   height: auto;
   min-width: 200px;
@@ -509,7 +523,7 @@
   border-left: 4px solid #348cb2;
   /* == */
 }
-.mcd-menu li ul:before {
+.sidebar li ul:before {
   content: "";
   position: absolute;
   /*top: -8px;
@@ -526,8 +540,8 @@
   border-top: 5px solid transparent;
   /* == */
 }
-.mcd-menu li:hover > ul,
-.mcd-menu li ul li:hover > ul {
+.sidebar li:hover > ul,
+.sidebar li ul li:hover > ul {
   display: block;
   opacity: 1;
   visibility: visible;
@@ -537,10 +551,10 @@
   left:250px;
   /* == */
 }
-/*.mcd-menu li ul li {
+/*.sidebar li ul li {
   float: none;
 }*/
-.mcd-menu li ul li a {
+.sidebar li ul li a {
   padding: 10px;
   text-align: left;
   border: 0;
@@ -550,18 +564,18 @@
   height: auto;
   /* == */
 }
-.mcd-menu li ul li a i {
+.sidebar li ul li a i {
   font-size: 16px;
   display: inline-block;
   margin: 0 10px 0 0;
 }
-.mcd-menu li ul li ul {
+.sidebar li ul li ul {
   left: 230px;
   top: 0;
   border: 0;
   border-left: 4px solid #348cb2;
 }
-.mcd-menu li ul li ul:before {
+.sidebar li ul li ul:before {
   content: "";
   position: absolute;
   top: 15px;
@@ -573,27 +587,27 @@
   border-bottom: 5px solid transparent;
   border-top: 5px solid transparent;
 }
-.mcd-menu li ul li:hover > ul {
+.sidebar li ul li:hover > ul {
   top: 0px;
   left: 200px;
 }
 
 
 
-/*.mcd-menu li.float {
+/*.sidebar li.float {
   float: right;
 }*/
-.mcd-menu li a.search {
+.sidebar li a.search {
   /*padding: 29px 20px 30px 10px;*/
   padding: 10px 10px 15px 10px;
   clear: both;
 }
-.mcd-menu li a.search i {
+.sidebar li a.search i {
   margin: 0;
   display: inline-block;
   font-size: 18px;
 }
-.mcd-menu li a.search input {
+.sidebar li a.search input {
   border: 1px solid #EEE;
   padding: 10px;
   background: #FFF;
@@ -618,77 +632,77 @@
 
 
 @media only screen and (min-width: 960px) and (max-width: 1199px) {
-    .mcd-menu {
+    .sidebar {
 		margin-left:10px;
 	}
 }
 
 @media only screen and (min-width: 768px) and (max-width: 959px) {
-    .mcd-menu {
+    .sidebar {
 		width: 200px;
 	}
-	.mcd-menu li a {
+	.sidebar li a {
 		height:30px;
 	}
-	.mcd-menu li a i {
+	.sidebar li a i {
 		font-size: 22px;
 	}
-	.mcd-menu li a strong {
+	.sidebar li a strong {
 		font-size: 12px;
 	}
-	.mcd-menu li a small {
+	.sidebar li a small {
 		font-size: 10px;
 	}
-	.mcd-menu li a.search input {
+	.sidebar li a.search input {
 		width: 120px;
 		font-size: 12px;
 	}
-	.mcd-menu li a.search buton{
+	.sidebar li a.search buton{
 		padding: 8px 10px 9px 10px;
 	}
-	.mcd-menu li > ul {
+	.sidebar li > ul {
 		min-width:180px;
 	}
-	.mcd-menu li:hover > ul {
+	.sidebar li:hover > ul {
 		min-width:180px;
 		left:200px;
 	}
-	.mcd-menu li ul li > ul, .mcd-menu li ul li ul li > ul {
+	.sidebar li ul li > ul, .sidebar li ul li ul li > ul {
 		min-width:150px;
 	}
-	.mcd-menu li ul li:hover > ul {
+	.sidebar li ul li:hover > ul {
 		left:180px;
 		min-width:150px;
 	}
-	.mcd-menu li ul li ul li:hover > ul {
+	.sidebar li ul li ul li:hover > ul {
 		left:150px;
 		min-width:150px;
 	}
-	.mcd-menu li ul a {
+	.sidebar li ul a {
 		font-size:12px;
 	}
-	.mcd-menu li ul a i {
+	.sidebar li ul a i {
 		font-size:14px;
 	}
 }
 
 @media only screen and (min-width: 480px) and (max-width: 767px) {
 
-	.mcd-menu {
+	.sidebar {
 		width: 50px;
 	}
-	.mcd-menu li a {
+	.sidebar li a {
 		position: relative;
 		padding: 12px 16px;
 		height:20px;
 	}
-	.mcd-menu li a small {
+	.sidebar li a small {
 		display: none;
 	}
-	.mcd-menu li a strong {
+	.sidebar li a strong {
 		display: none;
 	}
-	.mcd-menu li a:hover strong,.mcd-menu li a.active strong {
+	.sidebar li a:hover strong,.sidebar li a.active strong {
 		display:block;
 		font-size:10px;
 		padding:3px 0;
@@ -702,32 +716,32 @@
 		font-weight:normal;
 		text-align:center;
 	}
-	.mcd-menu li .search {
+	.sidebar li .search {
 		display: none;
 	}
 
-	.mcd-menu li > ul {
+	.sidebar li > ul {
 		min-width:180px;
 		left:70px;
 	}
-	.mcd-menu li:hover > ul {
+	.sidebar li:hover > ul {
 		min-width:180px;
 		left:50px;
 	}
-	.mcd-menu li ul li > ul, .mcd-menu li ul li ul li > ul {
+	.sidebar li ul li > ul, .sidebar li ul li ul li > ul {
 		min-width:150px;
 	}
-	.mcd-menu li ul li:hover > ul {
+	.sidebar li ul li:hover > ul {
 		left:180px;
 		min-width:150px;
 	}
-	.mcd-menu li ul li ul li > ul {
+	.sidebar li ul li ul li > ul {
 		left:35px;
 		top: 45px;
 		border:0;
 		border-top:4px solid #348cb2;
 	}
-	.mcd-menu li ul li ul li > ul:before {
+	.sidebar li ul li ul li > ul:before {
 		left:30px;
 		top: -9px;
 		border:0;
@@ -735,36 +749,36 @@
 		border-left:5px solid transparent;
 		border-right:5px solid transparent;
 	}
-	.mcd-menu li ul li ul li:hover > ul {
+	.sidebar li ul li ul li:hover > ul {
 		left:30px;
 		min-width:150px;
 		top: 35px;
 	}
-	.mcd-menu li ul a {
+	.sidebar li ul a {
 		font-size:12px;
 	}
-	.mcd-menu li ul a i {
+	.sidebar li ul a i {
 		font-size:14px;
 	}
 
 }
 
 @media only screen and (max-width: 479px) {
-    .mcd-menu {
+    .sidebar {
 		width: 50px;
 	}
-	.mcd-menu li a {
+	.sidebar li a {
 		position: relative;
 		padding: 12px 16px;
 		height:20px;
 	}
-	.mcd-menu li a small {
+	.sidebar li a small {
 		display: none;
 	}
-	.mcd-menu li a strong {
+	.sidebar li a strong {
 		display: none;
 	}
-	.mcd-menu li a:hover strong,.mcd-menu li a.active strong {
+	.sidebar li a:hover strong,.sidebar li a.active strong {
 		display:block;
 		font-size:10px;
 		padding:3px 0;
@@ -778,32 +792,32 @@
 		font-weight:normal;
 		text-align:center;
 	}
-	.mcd-menu li .search {
+	.sidebar li .search {
 		display: none;
 	}
 
-	.mcd-menu li > ul {
+	.sidebar li > ul {
 		min-width:180px;
 		left:70px;
 	}
-	.mcd-menu li:hover > ul {
+	.sidebar li:hover > ul {
 		min-width:180px;
 		left:50px;
 	}
-	.mcd-menu li ul li > ul, .mcd-menu li ul li ul li > ul {
+	.sidebar li ul li > ul, .sidebar li ul li ul li > ul {
 		min-width:150px;
 	}
-	.mcd-menu li ul li:hover > ul {
+	.sidebar li ul li:hover > ul {
 		left:180px;
 		min-width:150px;
 	}
-	.mcd-menu li ul li ul li > ul {
+	.sidebar li ul li ul li > ul {
 		left:35px;
 		top: 45px;
 		border:0;
 		border-top:4px solid #348cb2;
 	}
-	.mcd-menu li ul li ul li > ul:before {
+	.sidebar li ul li ul li > ul:before {
 		left:30px;
 		top: -9px;
 		border:0;
@@ -811,15 +825,15 @@
 		border-left:5px solid transparent;
 		border-right:5px solid transparent;
 	}
-	.mcd-menu li ul li ul li:hover > ul {
+	.sidebar li ul li ul li:hover > ul {
 		left:30px;
 		min-width:150px;
 		top: 35px;
 	}
-	.mcd-menu li ul a {
+	.sidebar li ul a {
 		font-size:12px;
 	}
-	.mcd-menu li ul a i {
+	.sidebar li ul a i {
 		font-size:14px;
 	}
 
