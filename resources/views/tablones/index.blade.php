@@ -47,7 +47,9 @@
         </div>
     </div>
 </div>
+
 @endforeach
+<input type ='button' class="btn btn-primary"  value = 'Home' onclick="location.href = '{{ url('/home') }}'"/>
 <script>
     let area = document.querySelectorAll(".cajas-texto")
 

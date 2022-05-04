@@ -67,7 +67,7 @@
                     </a>
                     <ul>
                         <li><a href="{{ route('tickets.register') }}"><i class="fa fa-bug" aria-hidden="true"></i>Abrir incidencia</a></li>
-                        <li><a href="{{ route('tickets.index') }}"><i class="fa fa-bug" aria-hidden="true"></i>/i>Ver incidencias</a></li>
+                        <li><a href="{{ route('tickets.index') }}"><i class="fa fa-bug" aria-hidden="true"></i>Ver incidencias</a></li>
                     </ul>
                 </li>
 

@@ -29,10 +29,10 @@
 
                                      <h3 class="card-title">{{$ticket->id}}-{{$ticket->tipe}}</h3>
                                      <img src="/{{$ticket->photo}}" width="300" height="300">
-                                     <small class="card-title">Fecha inicio {{$ticket->dateIni}}</small>
-                                     <br>
                                      <small class="card-title">Usuario creador de la incidencia-{{$ticket->idUser}}</small>
                                      <div>Estado {{$ticket->status}}</div>
+                                     <small class="card-title">Fecha inicio {{$ticket->dateIni}}</small>
+                                     <br>
                                      @if ($ticket->status=='cerrada'|| $ticket->status=="Cerrada")
                                      <small class="card-title">Fecha fin {{$ticket->dateEnd}}</small>
                                      @endif

@@ -97,7 +97,7 @@
                                         <th onclick="sortTable(4)">Rol</th>
                                         <th onclick="sortTable(5)">Tipo</th>
                                         <th onclick="sortTable(6)">Dirección</th>
-                                        <th>Acciones</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -112,25 +112,7 @@
                                                 <td>{{ $usuario->role }}</td>
                                                 <td>{{ $usuario->tipe }}</td>
                                                 <td>{{ $usuario->adress }}</td>
-                                                <td>
 
-                                                    <form class="formEliminar d-inline-block me-3"
-                                                        action="{{ route('usuarios.destroy', $usuario) }}" method="POST">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button
-                                                            onclick=" return confirm('¿Seguro que quieres eliminar este elemento?')"
-                                                            class="btn btn-outline-danger" type="submit">Eliminar</button>
-                                                    </form>
-
-
-                                                    <form class="formEditar d-inline-block"
-                                                        action="{{ route('usuarios.edit', $usuario) }}" method="GET">
-                                                        @csrf
-                                                        <button class="btn btn-outline-info " type="submit">Editar</button>
-                                                    </form>
-
-                                                </td>
                                         @endif
                                     @endforeach
                                 </tbody>

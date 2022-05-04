@@ -148,9 +148,10 @@
                                 <label id=label1 for="dateEnd"
                                     class="col-md-4 col-form-label text-md-end">{{ ('Fecha final') }}</label>
                                 <div class="col-md-6">
-                                    <input size="16" type="date" class="form-control" id="dateEnd" value="">
+                                    <input size="16" type="date" class="form-control" id="dateEnd" value="" name="dateEnd" >
                                 </div>
                             </div>
+
 
 
 <!--bill-->
@@ -158,7 +159,7 @@
                                 <label id=label1 for="bill"
                                     class="col-md-4 col-form-label text-md-end">{{ ('Foto de la factura si procede') }}</label>
                                 <div class="col-md-6">
-                                    <input id='bill' type="file" name="bill">
+                                    <input id='bill'  type="file" name="bill">
 
 
                                 </div>
