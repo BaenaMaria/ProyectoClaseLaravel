@@ -52,7 +52,7 @@ class HomeController extends Controller
 
         //counters usuario
 
-       $anuncioUsuario=tablon::where('idUser', '=', $request->user()->id)->count();
+       $anuncioUsuario=Tablon::where('idUser', '=', $request->user()->id)->count();
 
         $usuarioCurso=Ticket::where('idUser', '=', $request->user()->id)
        ->where('status','=','en curso')->count();

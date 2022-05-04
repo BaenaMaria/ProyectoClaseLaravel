@@ -66,7 +66,7 @@ class userController extends Controller
      */
     public function show()
     {
-        //
+
     }
 
     /**

@@ -70,6 +70,7 @@
                         <li><a href="{{ route('tickets.index') }}"><i class="fa fa-bug" aria-hidden="true"></i>Ver incidencias</a></li>
                     </ul>
                 </li>
+               
 
             </ul>
         </nav>
@@ -196,11 +197,11 @@
                         <li><a href="{{ route('tickets.register') }}"><i class="fa fa-bug" aria-hidden="true"></i></i>Abrir incidencia</a></li>
                         <li><a href="{{ route('tickets.index') }}"><i class="fa fa-bug" aria-hidden="true"></i>Ver incidencias</a></li>
                     </ul>
-                </li>
 
-            </ul>
-        </nav>
-    </div>
+
+                </ul>
+            </nav>
+        </div>
     <div style="margin-left:23%">
 
         <div class="containerDashboard">
@@ -288,6 +289,7 @@
                         <li><a href="{{ route('tickets.index') }}"><i class="fa fa-bug" aria-hidden="true"></i>Ver incidencias</a></li>
                     </ul>
                 </li>
+
 
             </ul>
         </nav>

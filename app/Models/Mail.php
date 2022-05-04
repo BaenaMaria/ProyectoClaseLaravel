@@ -16,7 +16,7 @@ class Mail extends Model
 
         static::created(function($user){
 
-            Mail::to('info@diarioprogramador.com')->send(new NuevoUsuario($user));
+            Mail::to('info@gescomver.com')->send(new NuevoUsuario($user));
 
         });
 
