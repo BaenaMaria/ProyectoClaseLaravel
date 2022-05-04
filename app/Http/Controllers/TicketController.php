@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Validator;
 use App\Mail\CerradaIncidencia;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class TicketController extends Controller
 {
@@ -20,15 +22,25 @@ class TicketController extends Controller
     public function index(User $user, Request $request)
     {
 
+        try{
 
-        $id = $request->get('buscarpor');
+            $id = $request->get('buscarpor');
 
-        $tickets = Ticket::where('id','like',"%$id%")->paginate(1000);
+            $tickets = Ticket::where('id','like',"%$id%")->paginate(1000);
 
-        return view('tickets.index', compact('tickets'));
+            return view('tickets.index', compact('tickets'));
 
-        $tickets = Ticket::orderBy('id', 'desc')->paginate(1000);
-        return view('tickets.index', compact('tickets'));
+            $tickets = Ticket::orderBy('id', 'desc')->paginate(1000);
+            return view('tickets.index', compact('tickets'));
+
+
+        }
+        catch(\Exception $e){
+            return view('error');
+        }
+
+
+
 
 
     }
@@ -41,10 +53,10 @@ class TicketController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'idUser' => ['required','integer'],
-            'tipe' => ['required','in:fontaneria,electricidad, limpieza, pintura, ascensores, cristal, albañil, conserje'],
+            'idUser' => ['required', 'integer'],
+            'tipe' => ['required', 'in:fontaneria,electricidad, limpieza, pintura, ascensores, cristal, albañil, conserje'],
             'description' => ['required', 'string', 'max:255'],
-            'status' => ['required','in:abierta, asignada, en curso, esperando respuesta, cerrada resuelta, cerrada sin resolver'],
+            'status' => ['required', 'in:abierta, asignada, en curso, esperando respuesta, cerrada resuelta, cerrada sin resolver'],
             'dateIni' => ['required'],
             'dateEnd',
             'bill' => ['string'],
@@ -82,28 +94,44 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        $ticket=$request->all();
+
+        try{
 
 
-        if ($photo=$request->file('photo')) {
-            $rutaGuardarImg='imagen/';  //ruta donde guardar la imagen
-            $imagenIncidencia = date('YmdHis').".".$photo->getClientOriginalExtension();  //nombre de la imagen
-            $photo->move($rutaGuardarImg,$imagenIncidencia );
-            $ticket['photo']=(string)$rutaGuardarImg.$imagenIncidencia;
+            $ticket=$request->all();
+
+
+            if ($photo=$request->file('photo')) {
+                $rutaGuardarImg='imagen/';  //ruta donde guardar la imagen
+                $imagenIncidencia = date('YmdHis').".".$photo->getClientOriginalExtension();  //nombre de la imagen
+                $photo->move($rutaGuardarImg,$imagenIncidencia );
+                $ticket['photo']=(string)$rutaGuardarImg.$imagenIncidencia;
+
+
+
+            }
+            else {
+
+                $rutaGuardarImg='imagen/';  //ruta donde guardar la imagen
+                $ticket['photo']=(string)$rutaGuardarImg."incidencia.png";
+            }
+
+            $ticket = Ticket::create($ticket);
+            $ticket->save();
+            $tickets = Ticket::orderBy('id', 'desc')->paginate(1000);
+            return view('tickets.index', compact('tickets'));
+
+
+
 
 
 
         }
-        else {
-
-            $rutaGuardarImg='imagen/';  //ruta donde guardar la imagen
-            $ticket['photo']=(string)$rutaGuardarImg."incidencia.png";
+        catch(\Exception $e){
+            return view('error');
         }
 
-        $ticket = Ticket::create($ticket);
-        $ticket->save();
-        $tickets = Ticket::orderBy('id', 'desc')->paginate(1000);
-        return view('tickets.index', compact('tickets'));
+
 
 
     }
@@ -141,46 +169,66 @@ class TicketController extends Controller
      */
     public function update(Request $request)
     {
-        $ticket = Ticket::findOrFail($request->id);
-        $ticket->idUser = $request->idUser;
-        $ticket->tipe = $request->tipe;
-        $ticket->description = $request->description;
-        $ticket->status = $request->status;
-        $ticket->dateIni = $request->dateIni;
-        $ticket->dateEnd = $request->dateEnd;
-        $ticket->bill = $request->bill;
+
+        try{
+            $ticket=$request->all();
+
+            $ticket = Ticket::findOrFail($request->id);
+            $ticket->idUser = $request->idUser;
+            $ticket->tipe = $request->tipe;
+            $ticket->description = $request->description;
+            $ticket->status = $request->status;
+            $ticket->dateIni = $request->dateIni;
+            $ticket->dateEnd = $request->dateEnd;
+            $ticket->bill = $request->bill;
+
+
+            // if($ticket->status=='cerrada'||$ticket->status=='Cerrada' ){
+            //     $email= DB::table('users')->select('email')->where('role', '=', 'administrador')->get();
+            //     $email3= DB::table('users')->select('email')
+            //     ->leftjoin("ticket", "users.id", "=", "ticket.idUser")
+            //     ->where('users.id', '=', $ticket->idUser)->get();
+
+
+            //      Mail::to($email)->send(new CerradaIncidencia($ticket));
+            //      Mail::to($email3)->send(new CerradaIncidencia($ticket));
+            // }
+            // else{
+
+            // }
+
+
+
+            if (isset($_POST['actualizar'])) {
+
+
+                if ($bill=$request->file('bill')) {
+                    $bill      =   $request->file('bill');
+                    $nombreimagen   =   Str::slug("nombre").time().'.'.$bill->getClientOriginalExtension();
+                    $nuevaruta      =   public_path('/bill/'.$nombreimagen);
+                    copy($bill->getRealPath(),$nuevaruta);
+                    $ticket['bill']='/imagen/'.$nombreimagen;
+                }
+            }
+
+            $ticket->save();
 
 
 
 
-
-        if ($bill=$request->file('bill')) {
-            $rutaGuardarImg='imagen/';  //ruta donde guardar la imagen
-            $imagenFactura= date('YmdHis').".".$bill->getClientOriginalExtension();  //nombre de la imagen
-            $bill->move($rutaGuardarImg,$imagenFactura );
-            $ticket['bill']=(string)$rutaGuardarImg.$imagenFactura;
-
+            $tickets = Ticket::orderBy('id', 'desc')->paginate();
+            return view('tickets.index', compact('tickets'));
 
 
         }
-        // if($ticket->status=='cerrada'||$ticket->status=='Cerrada' ){
-        //     $email= DB::table('users')->select('email')->where('role', '=', 'administrador')->get();
-        //     $email3= DB::table('users')->select('email')
-        //     ->leftjoin("ticket", "users.id", "=", "ticket.idUser")
-        //     ->where('users.id', '=', $ticket->idUser)->get();
+        catch(\Exception $e){
+            return view('error');
+        }
 
 
-        //      Mail::to($email)->send(new CerradaIncidencia($ticket));
-        //      Mail::to($email3)->send(new CerradaIncidencia($ticket));
-        // }
-        // else{
 
-        // }
 
-        $ticket->save();
 
-        $tickets = Ticket::orderBy('id', 'desc')->paginate();
-        return view('tickets.index', compact('tickets'));
 
 
     }
@@ -193,7 +241,26 @@ class TicketController extends Controller
      */
     public function destroy(Request $request)
     {
-        $ticket = Ticket::destroy($request->id);
+
+        try{
+
+            $ticket = Ticket::destroy($request->id);
+
+
+            $foto=(string)$ticket=$request->file('photo');
+
+            Storage::delete('/'.$foto);
+
+
+        }
+        catch(\Exception $e){
+            return view('error');
+        }
+
+
+
+
+
 
         $tickets = Ticket::orderBy('id', 'desc')->paginate(1000);
         return view('tickets.index', compact('tickets'));

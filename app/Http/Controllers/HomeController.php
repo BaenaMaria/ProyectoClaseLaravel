@@ -30,6 +30,10 @@ class HomeController extends Controller
 
     public function index(Request $request, User $user)
     {
+
+        try{
+
+
         //counters administrador
         $users=User::count();
         $incidenciasCurso=Ticket::where('status', 'en curso')->count();
@@ -59,5 +63,17 @@ class HomeController extends Controller
 
 
         return view('home', compact('users', 'incidenciasCerradas', 'incidenciasAbiertas', 'incidenciasCurso', 'operarioCurso', 'operarioAbiertas', 'operarioCerradas' ,'anuncioUsuario' ,'usuarioCurso', 'usuarioAbiertas', 'usuarioCerradas'));
+
+
+
+
+
+
+        }
+        catch(\Exception $e){
+            return view('error');
+        }
+
+
     }
 }

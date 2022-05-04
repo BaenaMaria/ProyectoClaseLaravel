@@ -16,16 +16,25 @@ class userController extends Controller
      */
     public function index(Request $request)
     {
+        try{
 
-        $name = $request->get('buscarpor');
+            $name = $request->get('buscarpor');
 
-        $usuarios = User::where('name','like',"%$name%")->paginate(1000);
-        return view('usuarios.index', compact('usuarios'));
+            $usuarios = User::where('name','like',"%$name%")->paginate(1000);
+            return view('usuarios.index', compact('usuarios'));
 
 
 
-        $usuarios = User::orderBy('id', 'desc')->paginate(1000);
-        return view('usuarios.index', compact('usuarios'));
+            $usuarios = User::orderBy('id', 'desc')->paginate(1000);
+            return view('usuarios.index', compact('usuarios'));
+
+        }
+        catch(\Exception $e){
+            return view('error');
+        }
+
+
+
     }
 
     /**
@@ -80,7 +89,9 @@ class userController extends Controller
      */
     public function update(Request $request)
     {
-        $usuario = User::findOrFail($request->id);
+        try{
+
+            $usuario = User::findOrFail($request->id);
         $usuario->name = $request->name;
         $usuario->phone = $request->phone;
         $usuario->email = $request->email;
@@ -93,6 +104,13 @@ class userController extends Controller
 
         $usuarios = User::orderBy('id', 'desc')->paginate(1000);
         return view('usuarios.index', compact('usuarios'));
+
+        }
+        catch(\Exception $e){
+            return view('error');
+        }
+
+
     }
 
     /**
@@ -103,8 +121,17 @@ class userController extends Controller
      */
     public function destroy(Request $request)
     {
+        try{
+
         $usuario = User::destroy($request->id);
         $usuarios = User::orderBy('id', 'desc')->paginate(1000);
         return view('usuarios.index', compact('usuarios'));
+
+
+        }
+        catch(\Exception $e){
+            return view('error');
+        }
+
     }
 }

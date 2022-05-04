@@ -12,10 +12,23 @@ class NotificacionesController extends Controller
 
     public function index(Request $request, Notificaciones $notificacion)
     {
+        try{
 
 
-        $notificaciones = Notificaciones::orderBy('id', 'desc')->paginate(1000);
-        return view('notificaciones.index', compact('notificaciones'));
+
+
+            $notificaciones = Notificaciones::orderBy('id', 'desc')->paginate(1000);
+            return view('notificaciones.index', compact('notificaciones'));
+
+
+
+
+
+        }
+        catch(\Exception $e){
+            return view('error');
+        }
+
     }
     protected function validator(array $data)
     {
@@ -48,35 +61,69 @@ class NotificacionesController extends Controller
     }
     public function store(Request $request)
     {
-        $notificacion = Notificaciones::create($request->all());
-        $notificacion->save();
-        $notificaciones = Notificaciones::orderBy('id', 'desc')->paginate();
-        return view('notificaciones.index', compact('notificaciones'));
+
+        try{
+
+
+            $notificacion = Notificaciones::create($request->all());
+            $notificacion->save();
+            $notificaciones = Notificaciones::orderBy('id', 'desc')->paginate();
+            return view('notificaciones.index', compact('notificaciones'));
+        }
+        catch(\Exception $e){
+            return view('error');
+        }
+
     }
     public function register(){
         return view('notificaciones.register');
     }
     public function edit(Request $request)
     {
-        $notificacion = Notificaciones::findOrFail($request->id);
-        return view('notificaciones.edit', compact('notificacion'));
+        try{
+
+            $notificacion = Notificaciones::findOrFail($request->id);
+            return view('notificaciones.edit', compact('notificacion'));
+
+        }
+        catch(\Exception $e){
+            return view('error');
+        }
+
     }
     public function update(Request $request)
     {
-        $notificacion = Notificaciones::findOrFail($request->id);
-        $notificacion->notification = $request->notification;
-        $notificacion->title = $request->title;
-        $notificacion->date = $request->date;
-        $notificacion->save();
-        $notificaciones = Notificaciones::orderBy('id', 'desc')->paginate(1000);
-        return view('notificaciones.index', compact('notificaciones'));
+        try{
+
+            $notificacion = Notificaciones::findOrFail($request->id);
+            $notificacion->notification = $request->notification;
+            $notificacion->title = $request->title;
+            $notificacion->date = $request->date;
+            $notificacion->save();
+            $notificaciones = Notificaciones::orderBy('id', 'desc')->paginate(1000);
+            return view('notificaciones.index', compact('notificaciones'));
+
+        }
+        catch(\Exception $e){
+            return view('error');
+        }
+
     }
 
     public function destroy(Request $request)
     {
-        $notificacion = Notificaciones::destroy($request->id);
-        $notificaciones = Notificaciones::orderBy('id', 'desc')->paginate(1000);
-        return view('notificaciones.index', compact('notificaciones'));
+        try{
+
+            $notificacion = Notificaciones::destroy($request->id);
+            $notificaciones = Notificaciones::orderBy('id', 'desc')->paginate(1000);
+            return view('notificaciones.index', compact('notificaciones'));
+
+
+        }
+        catch(\Exception $e){
+            return view('error');
+        }
+
     }
 }
 

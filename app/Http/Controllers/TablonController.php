@@ -13,16 +13,24 @@ class TablonController extends Controller
 
     public function index(Request $request)
     {
+        try{
 
-        $title = $request->get('buscarpor');
+            $title = $request->get('buscarpor');
 
-        $tablones = Tablon::where('title','like',"%$title%")->paginate(1000);
+            $tablones = Tablon::where('title','like',"%$title%")->paginate(1000);
 
-        return view('tablones.index', compact('tablones'));
+            return view('tablones.index', compact('tablones'));
 
 
-        $tablones = Tablon::orderBy('id', 'desc')->paginate(1000);
-        return view('tablones.index', compact('tablones'));
+            $tablones = Tablon::orderBy('id', 'desc')->paginate(1000);
+            return view('tablones.index', compact('tablones'));
+
+        }
+        catch(\Exception $e){
+            return view('error');
+        }
+
+
     }
     protected function validator(array $data)
     {
@@ -48,10 +56,19 @@ class TablonController extends Controller
     }
     public function store(Request $request)
     {
-        $tablon = Tablon::create($request->all());
-        $tablon->save();
-        $tablones = Tablon::orderBy('id', 'desc')->paginate();
-        return view('tablones.index', compact('tablones'));
+
+        try{
+
+            $tablon = Tablon::create($request->all());
+            $tablon->save();
+            $tablones = Tablon::orderBy('id', 'desc')->paginate();
+            return view('tablones.index', compact('tablones'));
+
+        }
+        catch(\Exception $e){
+            return view('error');
+        }
+
     }
     public function register(){
         return view('tablones.register');
@@ -63,22 +80,38 @@ class TablonController extends Controller
     }
     public function update(Request $request)
     {
-        $tablon = Tablon::findOrFail($request->id);
-        $tablon->anuncio = $request->anuncio;
-        $tablon->title = $request->title;
-        $tablon->idUser = $request->idUser;
+        try{
 
-        $tablon->save();
+            $tablon = Tablon::findOrFail($request->id);
+            $tablon->anuncio = $request->anuncio;
+            $tablon->title = $request->title;
+            $tablon->idUser = $request->idUser;
 
-        $tablones = Tablon::orderBy('id', 'desc')->paginate(1000);
-        return view('tablones.index', compact('tablones'));
+            $tablon->save();
+
+            $tablones = Tablon::orderBy('id', 'desc')->paginate(1000);
+            return view('tablones.index', compact('tablones'));
+
+        }
+        catch(\Exception $e){
+            return view('error');
+        }
+
     }
 
     public function destroy(Request $request)
     {
-        $tablon = Tablon::destroy($request->id);
-        $tablones = Tablon::orderBy('id', 'desc')->paginate(1000);
-        return view('tablones.index', compact('tablones'));
+        try{
+
+            $tablon = Tablon::destroy($request->id);
+            $tablones = Tablon::orderBy('id', 'desc')->paginate(1000);
+            return view('tablones.index', compact('tablones'));
+
+        }
+        catch(\Exception $e){
+            return view('error');
+        }
+
     }
 
 }
