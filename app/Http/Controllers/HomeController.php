@@ -9,6 +9,7 @@ use App\Models\Ticket;
 use App\Models\Tablon;
 
 
+
 class HomeController extends Controller
 {
     /**
@@ -29,10 +30,10 @@ class HomeController extends Controller
     public function index(Request $request, User $user)
     {
         //counters administrador
-        $users = DB::table('users')->count();
-        $incidenciasCurso= DB::table('ticket')->where('status', 'en curso')->count();
-        $incidenciasAbiertas= DB::table('ticket')->where('status', 'abierta')->count();
-        $incidenciasCerradas= DB::table('ticket')->where('status', 'cerrada')->count();
+        $users=User::count();
+        $incidenciasCurso=Ticket::where('status', 'en curso')->count();
+        $incidenciasAbiertas=Ticket::where('status', 'abierta')->count();
+        $incidenciasCerradas=Ticket::where('status', 'cerrada')->count();
 
          //counters operario
 

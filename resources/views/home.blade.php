@@ -225,7 +225,7 @@
                     <div class="row text-center">
                         <div class="col">
                         <div class="counter">
-                  <i class="fa fa-user fa-2x"></i>
+                  <i class="fa fa-comments-o fa-2x"></i>
                   <h2 class="timer count-title count-number" data-to="{{$anuncioUsuario}}" data-speed="1500"></h2>
                    <p class="count-text ">Mis anuncios </p>
                 </div>
@@ -296,7 +296,7 @@
    <div style="margin-left:23%">
 
     <div class="containerDashboard">
-      <h1>Dashboard de {{Auth::user()->name}} </h1>
+      <h1>Dashboard de {{Auth::user()->name}}:</h1>
     </div>
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
