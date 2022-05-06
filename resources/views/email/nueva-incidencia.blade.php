@@ -9,7 +9,7 @@
     Estamos experimentando problemas con {{$ticket->tipe}} que están afectando a algunos de nuestros usuarios y a quedado registrado en nuestra app.
     {{$ticket->description}}.<br>
 
-    Para más información, entre en nuestra aplicación de GESCONVE en el apartado incidencias y tendrá todos los detalles de la incidencia  {{$ticket->id}}.
+    Para más información, entre en nuestra aplicación de gescomve en el apartado incidencias y tendrá todos los detalles de la incidencia  {{$ticket->id}}.
     <br>Disculpe las molestias
 <br>
     <p>La fecha de inicio de la incidencia es: {{$ticket->dateIni}}</p>
