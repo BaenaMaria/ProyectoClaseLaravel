@@ -19,16 +19,13 @@ class TicketController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(User $user, Request $request)
+    public function index(Request $request)
     {
 
         try{
 
-            $id = $request->get('buscarpor');
-
-            $tickets = Ticket::where('id','like',"%$id%")->paginate(1000);
-
-            return view('tickets.index', compact('tickets'));
+            // $name = $request->get('buscarpor');
+            // $tikets = Ticket::where('tipe','like',"%$name%")->paginate(1000);
 
             $tickets = Ticket::orderBy('id', 'desc')->paginate(1000);
             return view('tickets.index', compact('tickets'));
@@ -61,7 +58,7 @@ class TicketController extends Controller
             'dateEnd',
             'bill' => ['string'],
             'firma' => ['string'],
-            'photo' => ['string, image'],
+            'photo' => ['string, image, mimes:jpg,jpeg,bmp,png'],
 
 
         ]);
@@ -103,7 +100,7 @@ class TicketController extends Controller
 
             if ($photo=$request->file('photo')) {
                 $rutaGuardarImg='imagen/';  //ruta donde guardar la imagen
-                $imagenIncidencia = date('YmdHis').".".$photo->getClientOriginalExtension();  //nombre de la imagen
+                $imagenIncidencia = date('YmdH').".".'png';  //nombre de la imagen
                 $photo->move($rutaGuardarImg,$imagenIncidencia );
                 $ticket['photo']=(string)$rutaGuardarImg.$imagenIncidencia;
 

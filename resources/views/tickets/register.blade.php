@@ -115,7 +115,7 @@
 
                         <!--photo-->
                         <div class="row mb-3">
-                            <label for="photo" class="col-md-4 col-form-control text-md-end">{{ __('Foto de la incidencia') }}</label>
+                            <label for="photo"  accept="image/jpeg,image/png,image/jpg,image/bmp"  multiple class="col-md-4 col-form-control text-md-end">{{ __('Foto de la incidencia en formato jpg,jpeg,bmp,png') }}</label>
                             <div class="col-md-6">
                             <input type="file" id="photo" name='photo'>
                             </div>
