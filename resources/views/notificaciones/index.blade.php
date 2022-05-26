@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-sm-4 py-2">
             <div class="card card-body h-100">
-                gescomveS tu administrador de confianza
+                GESCOMVES tu administrador de confianza
                 <img  src="/imagen/logo.PNG"  class="circular--square" alt="" width="100" height="100"  >
             </div>
         </div>
@@ -55,7 +55,7 @@
         </div>
         <div class="col-sm-4 py-2">
             <div class="card card-body h-100">
-                gescomveS tu administrador de confianza
+                GESCOMVES tu administrador de confianza
                 <img  src="/imagen/logo.PNG"  class="circular--square" alt="" width="100" height="100"  >
             </div>
         </div>

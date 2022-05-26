@@ -8,8 +8,26 @@ use Illuminate\Support\Facades\Validator;
 
 
 class TablonController extends Controller
+/*
+    |--------------------------------------------------------------------------
+    |Notificaciones Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles the registration of new tablon as well as their
+    | validation and creation. By default this controller uses a trait to
+    | provide this functionality without requiring any additional code.
+    |
+    */
 {
     protected $table = 'tablon';
+
+
+    /**
+     * Show the application listaTablones.
+     * If it fails, show the view error.
+     * @param  $request, $notificaction
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
 
     public function index(Request $request)
     {
@@ -32,6 +50,12 @@ class TablonController extends Controller
 
 
     }
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
     protected function validator(array $data)
     {
 
@@ -43,8 +67,13 @@ class TablonController extends Controller
 
         ]);
     }
+     /**
+     * Create a new notification instance.
+     * @param  array  $data
+     * @return \App\Models\Tablon
+     */
 
-    public function create(array $data, Request $request)
+    public function create(array $data)
     {
 
         return Tablon::create([
@@ -54,6 +83,15 @@ class TablonController extends Controller
 
         ]);
     }
+    /**
+     * Save the different data of the form view in the notification object.
+     * If it fails, show the view error.
+     * @param  array  $request.
+     * @return \App\Models\Tablon
+     */
+
+
+
     public function store(Request $request)
     {
 
@@ -70,14 +108,36 @@ class TablonController extends Controller
         }
 
     }
+         /**
+     * Save the different data of the form view in the notification object.
+     * Open register view.
+     */
+
     public function register(){
         return view('tablones.register');
     }
+
+  /**
+     * Open edit view.
+     * Not used.
+     * If it fails, show the view error.
+     * @param  array  $request.
+     * @return \App\Models\Tablon
+     */
+
+
     public function edit(Request $request)
     {
         $tablon = Tablon::findOrFail($request->id);
         return view('tablones.edit', compact('tablon'));
     }
+     /**
+     * Allows to update the object notificacion.
+     * If it fails, show the view error.
+     * Not used.
+     * @param  array  $request.
+     * @return \App\Models\Notificaciones
+     */
     public function update(Request $request)
     {
         try{
@@ -98,6 +158,12 @@ class TablonController extends Controller
         }
 
     }
+    /**
+* Allows to delete the object notificacion.
+* If it fails, show the view error.
+* @param  array  $request.
+* @return \App\Models\Tablon
+*/
 
     public function destroy(Request $request)
     {

@@ -10,7 +10,11 @@ class tablon extends Model
     use HasFactory;
 
     protected $table = "tablon";
-
+/**
+     * The attributes that are mass assignable.
+     *
+     *
+     */
     protected $fillable = [
         'anuncio',
         'title',

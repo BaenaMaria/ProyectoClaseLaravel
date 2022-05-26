@@ -24,7 +24,9 @@ class HomeController extends Controller
 
     /**
      * Show the application dashboard.
-     *
+     * If it fails, show the view error.
+     * We create the dashboard counters for the dashboard view.
+     * @param  $request, $user
      * @return \Illuminate\Contracts\Support\Renderable
      */
 

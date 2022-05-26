@@ -16,7 +16,11 @@ class Ticket extends Model
     use HasFactory;
     protected $table = "ticket";
 
-
+/**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'idUser',
         'idOperario',
@@ -30,6 +34,13 @@ class Ticket extends Model
         'firma',
 
     ];
+
+     /**
+     *Create an email instance when creating a new user
+     *
+     *
+     */
+
     public static function boot(){
 
         parent::boot();
@@ -38,11 +49,11 @@ class Ticket extends Model
 
 
 
-            //  $email= DB::table('users')->select('email')->where('role', '=', 'administrador')->get();
-            //  $email3= DB::table('users')->select('email')->where('tipe', '=', $ticket->tipe)->get();
+             $email= DB::table('users')->select('email')->where('role', '=', 'administrador')->get();
+             $email3= DB::table('users')->select('email')->where('tipe', '=', $ticket->tipe)->get();
 
-            //  Mail::to($email)->send(new NuevaIncidencia($ticket));
-            //  Mail::to($email3)->send(new NuevaIncidencia($ticket));
+             Mail::to($email)->send(new NuevaIncidencia($ticket));
+             Mail::to($email3)->send(new NuevaIncidencia($ticket));
          });
 
     }

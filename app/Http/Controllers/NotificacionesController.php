@@ -10,6 +10,26 @@ class NotificacionesController extends Controller
 {
     protected $table = "notification";
 
+     /*
+    |--------------------------------------------------------------------------
+    |Notificaciones Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles the registration of new notificacion as well as their
+    | validation and creation. By default this controller uses a trait to
+    | provide this functionality without requiring any additional code.
+    |
+    */
+
+
+    /**
+     * Show the application listaUsuarios.
+     * If it fails, show the view error.
+     * @param  $request, $notificaction
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+
+
     public function index(Request $request, Notificaciones $notificacion)
     {
         try{
@@ -30,6 +50,12 @@ class NotificacionesController extends Controller
         }
 
     }
+   /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
     protected function validator(array $data)
     {
 
@@ -42,6 +68,11 @@ class NotificacionesController extends Controller
 
         ]);
     }
+     /**
+     * Create a new notification instance.
+     * @param  array  $data
+     * @return \App\Models\Notificaciones
+     */
 
     public function create(array $data)
     {
@@ -59,6 +90,15 @@ class NotificacionesController extends Controller
         ]);
 
     }
+    /**
+     * Save the different data of the form view in the notification object.
+     * If it fails, show the view error.
+     * @param  array  $request.
+     * @return \App\Models\Notificaciones
+     */
+
+
+
     public function store(Request $request)
     {
 
@@ -75,9 +115,24 @@ class NotificacionesController extends Controller
         }
 
     }
+       /**
+     * Save the different data of the form view in the notification object.
+     * Open register view.
+     */
+
     public function register(){
         return view('notificaciones.register');
     }
+
+  /**
+     * Open edit view.
+     * If it fails, show the view error.
+     * @param  array  $request.
+     * @return \App\Models\Notificaciones
+     */
+
+
+
     public function edit(Request $request)
     {
         try{
@@ -91,6 +146,13 @@ class NotificacionesController extends Controller
         }
 
     }
+     /**
+     * Allows to update the object notificacion.
+     * If it fails, show the view error.
+     * @param  array  $request.
+     * @return \App\Models\Notificaciones
+     */
+
     public function update(Request $request)
     {
         try{
@@ -109,6 +171,12 @@ class NotificacionesController extends Controller
         }
 
     }
+/**
+* Allows to delete the object notificacion.
+* If it fails, show the view error.
+* @param  array  $request.
+* @return \App\Models\Notificaciones
+*/
 
     public function destroy(Request $request)
     {

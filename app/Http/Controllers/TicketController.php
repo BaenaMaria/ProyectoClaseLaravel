@@ -65,6 +65,12 @@ class TicketController extends Controller
 
 
     }
+       /**
+     * Create a new notification instance.
+     * @param  array  $data
+     * @return \App\Models\Ticket
+     */
+
 
     public function create(array $data)
     {
@@ -133,16 +139,6 @@ class TicketController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -180,19 +176,19 @@ class TicketController extends Controller
             $ticket->bill = $request->bill;
 
 
-            // if($ticket->status=='cerrada'||$ticket->status=='Cerrada' ){
-            //     $email= DB::table('users')->select('email')->where('role', '=', 'administrador')->get();
-            //     $email3= DB::table('users')->select('email')
-            //     ->leftjoin("ticket", "users.id", "=", "ticket.idUser")
-            //     ->where('users.id', '=', $ticket->idUser)->get();
+         if($ticket->status=='cerrada'||$ticket->status=='Cerrada' ){
+                 $email= DB::table('users')->select('email')->where('role', '=', 'administrador')->get();
+                 $email3= DB::table('users')->select('email')
+                 ->leftjoin("ticket", "users.id", "=", "ticket.idUser")
+                 ->where('users.id', '=', $ticket->idUser)->get();
 
 
-            //      Mail::to($email)->send(new CerradaIncidencia($ticket));
-            //      Mail::to($email3)->send(new CerradaIncidencia($ticket));
-            // }
-            // else{
+                  Mail::to($email)->send(new CerradaIncidencia($ticket));
+                 Mail::to($email3)->send(new CerradaIncidencia($ticket));
+            }
+             else{
 
-            // }
+             }
 
 
 

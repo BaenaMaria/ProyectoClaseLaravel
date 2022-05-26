@@ -9,6 +9,11 @@ use App\Mail\NuevoUsuario;
 class Mail extends Model
 {
     use HasFactory;
+    /**
+     *Create an email instance when creating a new user
+     *
+     * @var array<int, string>
+     */
 
     protected static function boot(){
 

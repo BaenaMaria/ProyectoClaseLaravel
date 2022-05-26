@@ -50,20 +50,25 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    //Evento se ejecuta cuando un usuario es creado
+     /**
+     *Create an email instance when creating a new user
+     *
+     * @var array<int, string>
+     */
+
 
     public static function boot(){
 
         parent::boot();
 
-        // static::created(function($user){
+         static::created(function($user){
 
-        //     $email= DB::table('users')->select('email')->where('role', '=', 'administrador')->get();
-        //     $email2= DB::table('users')->select('email')->where('id', '=', $user->id)->get();
+             $email= DB::table('users')->select('email')->where('role', '=', 'administrador')->get();
+             $email2= DB::table('users')->select('email')->where('id', '=', $user->id)->get();
 
-        //     Mail::to($email)->send(new NuevoUsuario($user));
-        //     Mail::to($email2)->send(new NuevoUsuario($user));
-        // });
+             Mail::to($email)->send(new NuevoUsuario($user));
+             Mail::to($email2)->send(new NuevoUsuario($user));
+         });
 
     }
 

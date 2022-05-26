@@ -22,17 +22,17 @@ class CerradaIncidencia extends Mailable
     }
 
     /**
-     * Build the message.
+     * Build the message and send an email.
      *
      * @return $this
      */
     public function build()
     {
 
-            // return $this->from('no-reply@gescomve.com', 'Sistema Automatizado de Envio de Notificaciones')
-            // ->subject('Cerrrada  incidencia')
-            // ->view('email.cerrada-incidencia',
-            // ['ticket' => $this->ticket]);
+             return $this->from('no-reply@gescomve.com', 'Sistema Automatizado de Envio de Notificaciones')
+             ->subject('Cerrrada  incidencia')
+             ->view('email.cerrada-incidencia',
+             ['ticket' => $this->ticket]);
 
 
 
