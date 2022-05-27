@@ -3,11 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\OperarioController;
 use App\Http\Controllers\TablonController;
 use App\Http\Controllers\NotificacionesController;
 use App\Http\Controllers\TicketController;
-use App\Http\Controllers\FormularioController;
+
 
 
 /*
@@ -58,5 +57,3 @@ Route::get('/tickets/{id}', [TicketController::class, 'edit'])->name('tickets.ed
 Route::put('/tickets/{id}', [TicketController::class,'update'])->name('tickets.update'); //Actualizar tablon
 Route::delete('/tickets/{id}', [TicketController::class, 'destroy'])->name('tickets.destroy');//Eliminar tablon
 
-Route::get('/contacto', [FormularioController::class, 'show'])->name('formularioContacto.show'); //Mostrar formulario de contacto
-Route::post('/contacto', [FormularioController::class, 'enviar'])->name('formularioContacto.enviar');
